@@ -8,11 +8,15 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 "quill.imageUploader": resolve(__dirname, "src/dist.js"),
+                "quill.imageUploader.css": resolve(__dirname, "src/quill.imageUploader.css"),
                 demo: resolve(__dirname, "src/demo.js"),
             },
             output: {
                 entryFileNames: "[name].min.js",
                 dir: resolve(__dirname, "dist"),
+                assetFileNames: (assetInfo) => {
+                    return "[name].[ext]";
+                },
             },
             external: ["Quill"], // Mark Quill as an external dependency
             plugins: [
@@ -36,11 +40,7 @@ export default defineConfig({
         }),
     ],
     css: {
-        preprocessorOptions: {
-            css: {
-                additionalData: `@import "./src/styles.css";`, // Optional CSS pre-processing
-            },
-        },
+        postcss: null, // Remove unnecessary postcss config
     },
     server: {
         https: true, // Enable HTTPS for dev server
