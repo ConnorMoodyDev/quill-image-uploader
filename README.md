@@ -68,7 +68,7 @@ var quill = new Quill(editor, {
         return new Promise((resolve, reject) => {
           setTimeout(() => {
             resolve(
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png"
+              {url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/480px-JavaScript-logo.png", uploadId: 5}
             );
           }, 3500);
         });
