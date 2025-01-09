@@ -1,7 +1,10 @@
 {
-    "name": "@ConnorMoodyDev/quill-image-uploader",
-    "version": "1.3.0",
-    "repository": "https://github.com/ConnorMoodyDev/quill-image-uploader.git",
+    "name": "@connormoodydev/quill-image-uploader",
+    "version": "1.3.1",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ConnorMoodyDev/quill-image-uploader.git"
+    },
     "description": "A module for Quill rich text editor to allow images to be uploaded to a server instead of being base64 encoded",
     "main": "src/quill.imageUploader.js",
     "eslintConfig": {
@@ -14,8 +17,7 @@
         "dev": "vite",
         "watch": "vite build --watch",
         "build": "vite build",
-        "preview": "vite preview",
-        "publish": "npm publish"
+        "preview": "vite preview"
     },
     "keywords": [
         "quill",

@@ -1,4 +1,4 @@
-import LoadingImage from "./blots/image.js";
+import LoadingImage from "./blots/loading-image.js";
 class ImageUploader {
     constructor(quill, options) {
         this.quill = quill;
@@ -137,8 +137,8 @@ class ImageUploader {
         }
 
         this.options.upload(file).then(
-            (imageUrl) => {
-                this.insertToEditor(imageUrl);
+            ({ imageUrl, uploadId = -1 }) => {
+                this.insertToEditor(imageUrl, uploadId);
             },
             (error) => {
                 isUploadReject = true;
@@ -167,7 +167,7 @@ class ImageUploader {
         this.quill.setSelection(range.index + 1, 0);
     }
 
-    insertToEditor(url) {
+    insertToEditor(url, uploadId) {
         const range = this.range;
 
         const lengthToDelete = this.calculatePlaceholderInsertLength();
@@ -179,6 +179,13 @@ class ImageUploader {
 
         // Insert the server saved image
         this.quill.insertEmbed(range.index, "image", `${url}`, "user");
+
+        if (uploadId !== -1) {
+            const [image] = this.quill.getLeaf(range.index);
+            if (image?.domNode) {
+                image.domNode.setAttribute('data-upload-id', uploadId);
+            }
+        }
 
         range.index++;
         this.quill.setSelection(range, "user");
