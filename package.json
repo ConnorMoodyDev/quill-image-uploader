@@ -1,6 +1,6 @@
 {
     "name": "@connormoodydev/quill-image-uploader",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ConnorMoodyDev/quill-image-uploader.git"

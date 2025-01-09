@@ -1,4 +1,6 @@
 import LoadingImage from "./blots/loading-image.js";
+import CustomImage from "./blots/image.js";
+
 class ImageUploader {
     constructor(quill, options) {
         this.quill = quill;
@@ -137,8 +139,8 @@ class ImageUploader {
         }
 
         this.options.upload(file).then(
-            ({ imageUrl, uploadId = -1 }) => {
-                this.insertToEditor(imageUrl, uploadId);
+            ({ url, uploadId = -1 }) => {
+                this.insertToEditor(url, uploadId);
             },
             (error) => {
                 isUploadReject = true;
@@ -178,14 +180,11 @@ class ImageUploader {
         LoadingImage.allowDelete = false;
 
         // Insert the server saved image
-        this.quill.insertEmbed(range.index, "image", `${url}`, "user");
+        this.quill.insertEmbed(range.index, "custom-image", {
+            src: url,
+            uploadId: uploadId !== -1 ? uploadId : null,
+        }, "user");
 
-        if (uploadId !== -1) {
-            const [image] = this.quill.getLeaf(range.index);
-            if (image?.domNode) {
-                image.domNode.setAttribute('data-upload-id', uploadId);
-            }
-        }
 
         range.index++;
         this.quill.setSelection(range, "user");

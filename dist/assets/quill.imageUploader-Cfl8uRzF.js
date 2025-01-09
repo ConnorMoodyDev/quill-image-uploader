@@ -1,7 +1,7 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-var _a;
+var _a, _b;
 function t(t2) {
   return t2 && t2.__esModule && Object.prototype.hasOwnProperty.call(t2, "default") ? t2.default : t2;
 }
@@ -85,7 +85,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
     /***/
     function(t2, e2, n2) {
       Object.defineProperty(e2, "__esModule", { value: true });
-      var r2 = n2(17), o2 = n2(18), i2 = n2(19), l2 = n2(45), a2 = n2(46), s2 = n2(47), u = n2(48), c = n2(49), f = n2(12), h = n2(32), d = n2(33), p = n2(31), y = n2(1), v = { Scope: y.Scope, create: y.create, find: y.find, query: y.query, register: y.register, Container: r2.default, Format: o2.default, Leaf: i2.default, Embed: u.default, Scroll: l2.default, Block: s2.default, Inline: a2.default, Text: c.default, Attributor: { Attribute: f.default, Class: h.default, Style: d.default, Store: p.default } };
+      var r2 = n2(17), o2 = n2(18), i2 = n2(19), l2 = n2(45), a2 = n2(46), s2 = n2(47), u2 = n2(48), c = n2(49), f = n2(12), h = n2(32), d = n2(33), p = n2(31), y = n2(1), v = { Scope: y.Scope, create: y.create, find: y.find, query: y.query, register: y.register, Container: r2.default, Format: o2.default, Leaf: i2.default, Embed: u2.default, Scroll: l2.default, Block: s2.default, Inline: a2.default, Text: c.default, Attributor: { Attribute: f.default, Class: h.default, Style: d.default, Store: p.default } };
       e2.default = v;
     },
     /* 1 */
@@ -113,7 +113,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         }(Error)
       );
       e2.ParchmentError = i2;
-      var l2, a2 = {}, s2 = {}, u = {}, c = {};
+      var l2, a2 = {}, s2 = {}, u2 = {}, c = {};
       function f(t3, e3) {
         var n3;
         if (void 0 === e3 && (e3 = l2.ANY), "string" == typeof t3) n3 = c[t3] || a2[t3];
@@ -122,7 +122,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         else if (t3 instanceof HTMLElement) {
           var r3 = (t3.getAttribute("class") || "").split(/\s+/);
           for (var o3 in r3) if (n3 = s2[r3[o3]]) break;
-          n3 = n3 || u[t3.tagName];
+          n3 = n3 || u2[t3.tagName];
         }
         return null == n3 ? null : (
           // @ts-ignore
@@ -155,7 +155,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return c[r3.blotName || r3.attrName] = r3, "string" == typeof r3.keyName ? a2[r3.keyName] = r3 : (null != r3.className && (s2[r3.className] = r3), null != r3.tagName && (Array.isArray(r3.tagName) ? r3.tagName = r3.tagName.map(function(t4) {
           return t4.toUpperCase();
         }) : r3.tagName = r3.tagName.toUpperCase(), (Array.isArray(r3.tagName) ? r3.tagName : [r3.tagName]).forEach(function(t4) {
-          null != u[t4] && null != r3.className || (u[t4] = r3);
+          null != u2[t4] && null != r3.className || (u2[t4] = r3);
         }))), r3;
       };
     },
@@ -222,21 +222,21 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           for (var a3 = i3.retain; "insert" === e3.peekType() && e3.peekLength() <= a3; ) a3 -= e3.peekLength(), r3.push(e3.next());
           i3.retain - a3 > 0 && n3.next(i3.retain - a3);
         }
-        for (var u = new s2(r3); e3.hasNext() || n3.hasNext(); ) if ("insert" === n3.peekType()) u.push(n3.next());
-        else if ("delete" === e3.peekType()) u.push(e3.next());
+        for (var u2 = new s2(r3); e3.hasNext() || n3.hasNext(); ) if ("insert" === n3.peekType()) u2.push(n3.next());
+        else if ("delete" === e3.peekType()) u2.push(e3.next());
         else {
           var c = Math.min(e3.peekLength(), n3.peekLength()), f = e3.next(c), h = n3.next(c);
           if ("number" == typeof h.retain) {
             var d = {};
             "number" == typeof f.retain ? d.retain = c : d.insert = f.insert;
             var p = l2.attributes.compose(f.attributes, h.attributes, "number" == typeof f.retain);
-            if (p && (d.attributes = p), u.push(d), !n3.hasNext() && o2(u.ops[u.ops.length - 1], d)) {
+            if (p && (d.attributes = p), u2.push(d), !n3.hasNext() && o2(u2.ops[u2.ops.length - 1], d)) {
               var y = new s2(e3.rest());
-              return u.concat(y).chop();
+              return u2.concat(y).chop();
             }
-          } else "number" == typeof h.delete && "number" == typeof f.retain && u.push(h);
+          } else "number" == typeof h.delete && "number" == typeof f.retain && u2.push(h);
         }
-        return u.chop();
+        return u2.chop();
       }, s2.prototype.concat = function(t3) {
         var e3 = new s2(this.ops.slice());
         return t3.ops.length > 0 && (e3.push(t3.ops[0]), e3.ops = e3.ops.concat(t3.ops.slice(1))), e3;
@@ -247,8 +247,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             if (null != n4.insert) return "string" == typeof n4.insert ? n4.insert : a2;
             throw new Error("diff() called " + (e4 === t3 ? "on" : "with") + " non-document");
           }).join("");
-        }), i3 = new s2(), u = r2(n3[0], n3[1], e3), c = l2.iterator(this.ops), f = l2.iterator(t3.ops);
-        return u.forEach(function(t4) {
+        }), i3 = new s2(), u2 = r2(n3[0], n3[1], e3), c = l2.iterator(this.ops), f = l2.iterator(t3.ops);
+        return u2.forEach(function(t4) {
           for (var e4 = t4[1].length; e4 > 0; ) {
             var n4 = 0;
             switch (t4[0]) {
@@ -270,9 +270,9 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         e3 = e3 || "\n";
         for (var n3 = l2.iterator(this.ops), r3 = new s2(), o3 = 0; n3.hasNext(); ) {
           if ("insert" !== n3.peekType()) return;
-          var i3 = n3.peek(), a3 = l2.length(i3) - n3.peekLength(), u = "string" == typeof i3.insert ? i3.insert.indexOf(e3, a3) - a3 : -1;
-          if (u < 0) r3.push(n3.next());
-          else if (u > 0) r3.push(n3.next(u));
+          var i3 = n3.peek(), a3 = l2.length(i3) - n3.peekLength(), u2 = "string" == typeof i3.insert ? i3.insert.indexOf(e3, a3) - a3 : -1;
+          if (u2 < 0) r3.push(n3.next());
+          else if (u2 > 0) r3.push(n3.next(u2));
           else {
             if (false === t3(r3, n3.next(1).attributes || {}, o3)) return;
             o3 += 1, r3 = new s2();
@@ -283,12 +283,12 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if (e3 = !!e3, "number" == typeof t3) return this.transformPosition(t3, e3);
         for (var n3 = l2.iterator(this.ops), r3 = l2.iterator(t3.ops), o3 = new s2(); n3.hasNext() || r3.hasNext(); ) if ("insert" !== n3.peekType() || !e3 && "insert" === r3.peekType()) if ("insert" === r3.peekType()) o3.push(r3.next());
         else {
-          var i3 = Math.min(n3.peekLength(), r3.peekLength()), a3 = n3.next(i3), u = r3.next(i3);
+          var i3 = Math.min(n3.peekLength(), r3.peekLength()), a3 = n3.next(i3), u2 = r3.next(i3);
           if (a3.delete)
             continue;
-          u.delete ? o3.push(u) : (
+          u2.delete ? o3.push(u2) : (
             // We retain either their retain or insert
-            o3.retain(i3, l2.attributes.transform(a3.attributes, u.attributes, e3))
+            o3.retain(i3, l2.attributes.transform(a3.attributes, u2.attributes, e3))
           );
         }
         else o3.retain(l2.length(n3.next()));
@@ -315,7 +315,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return void 0 === e3 || n2.call(t3, e3);
       }, s2 = function(t3, e3) {
         o2 && "__proto__" === e3.name ? o2(t3, e3.name, { enumerable: true, configurable: true, value: e3.newValue, writable: true }) : t3[e3.name] = e3.newValue;
-      }, u = function(t3, e3) {
+      }, u2 = function(t3, e3) {
         if ("__proto__" === e3) {
           if (!n2.call(t3, e3)) return;
           if (i2)
@@ -333,8 +333,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           ++h
         )
           if (null != (e3 = arguments[h]))
-            for (n3 in e3) r3 = u(f, n3), // Prevent never-ending loop
-            f !== (o3 = u(e3, n3)) && // Recurse if we're merging plain objects or arrays
+            for (n3 in e3) r3 = u2(f, n3), // Prevent never-ending loop
+            f !== (o3 = u2(e3, n3)) && // Recurse if we're merging plain objects or arrays
             (p && o3 && (a2(o3) || (i3 = l2(o3))) ? (i3 ? (i3 = false, c = r3 && l2(r3) ? r3 : []) : c = r3 && a2(r3) ? r3 : {}, // Never move original objects, clone them
             s2(f, { name: n3, newValue: t3(p, c, o3) })) : void 0 !== o3 && s2(f, { name: n3, newValue: o3 }));
         return f;
@@ -364,7 +364,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if ("value" in o3) return o3.value;
         var l3 = o3.get;
         return void 0 !== l3 ? l3.call(r3) : void 0;
-      }, i2 = f(n2(3)), l2 = f(n2(2)), a2 = f(n2(0)), s2 = f(n2(16)), u = f(n2(6)), c = f(n2(7));
+      }, i2 = f(n2(3)), l2 = f(n2(2)), a2 = f(n2(0)), s2 = f(n2(16)), u2 = f(n2(6)), c = f(n2(7));
       function f(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -451,7 +451,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         var e3 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
         return null == t3 ? e3 : ("function" == typeof t3.formats && (e3 = (0, i2.default)(e3, t3.formats())), null == t3.parent || "scroll" == t3.parent.blotName || t3.parent.statics.scope !== t3.statics.scope ? e3 : b(t3.parent, e3));
       }
-      v.blotName = "block", v.tagName = "P", v.defaultChild = "break", v.allowedChildren = [u.default, a2.default.Embed, c.default], e2.bubbleFormats = b, e2.BlockEmbed = y, e2.default = v;
+      v.blotName = "block", v.tagName = "P", v.defaultChild = "break", v.allowedChildren = [u2.default, a2.default.Embed, c.default], e2.bubbleFormats = b, e2.BlockEmbed = y, e2.default = v;
     },
     /* 5 */
     /***/
@@ -491,7 +491,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         };
       }();
       n2(50);
-      var l2 = v(n2(2)), a2 = v(n2(14)), s2 = v(n2(8)), u = v(n2(9)), c = v(n2(0)), f = n2(15), h = v(f), d = v(n2(3)), p = v(n2(10)), y = v(n2(34));
+      var l2 = v(n2(2)), a2 = v(n2(14)), s2 = v(n2(8)), u2 = v(n2(9)), c = v(n2(0)), f = n2(15), h = v(f), d = v(n2(3)), p = v(n2(10)), y = v(n2(34));
       function v(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -569,13 +569,13 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             return n3.setSelection(r4, s2.default.sources.SILENT), o3;
           }, r3);
         } }, { key: "formatLine", value: function(t4, e3, n3, r3, i3) {
-          var l3, a3 = this, s3 = w(t4, e3, n3, r3, i3), u2 = o2(s3, 4);
-          return t4 = u2[0], e3 = u2[1], l3 = u2[2], i3 = u2[3], O.call(this, function() {
+          var l3, a3 = this, s3 = w(t4, e3, n3, r3, i3), u3 = o2(s3, 4);
+          return t4 = u3[0], e3 = u3[1], l3 = u3[2], i3 = u3[3], O.call(this, function() {
             return a3.editor.formatLine(t4, e3, l3);
           }, i3, t4, 0);
         } }, { key: "formatText", value: function(t4, e3, n3, r3, i3) {
-          var l3, a3 = this, s3 = w(t4, e3, n3, r3, i3), u2 = o2(s3, 4);
-          return t4 = u2[0], e3 = u2[1], l3 = u2[2], i3 = u2[3], O.call(this, function() {
+          var l3, a3 = this, s3 = w(t4, e3, n3, r3, i3), u3 = o2(s3, 4);
+          return t4 = u3[0], e3 = u3[1], l3 = u3[2], i3 = u3[3], O.call(this, function() {
             return a3.editor.formatText(t4, e3, l3);
           }, i3, t4, 0);
         } }, { key: "getBounds", value: function(t4) {
@@ -615,8 +615,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             return o3.editor.insertEmbed(e3, n3, r3);
           }, i3, e3);
         } }, { key: "insertText", value: function(t4, e3, n3, r3, i3) {
-          var l3, a3 = this, s3 = w(t4, 0, n3, r3, i3), u2 = o2(s3, 4);
-          return t4 = u2[0], l3 = u2[2], i3 = u2[3], O.call(this, function() {
+          var l3, a3 = this, s3 = w(t4, 0, n3, r3, i3), u3 = o2(s3, 4);
+          return t4 = u3[0], l3 = u3[2], i3 = u3[3], O.call(this, function() {
             return a3.editor.insertText(t4, e3, l3);
           }, i3, t4, e3.length);
         } }, { key: "isEnabled", value: function() {
@@ -686,8 +686,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if (this.options.strict && !this.isEnabled() && e3 === s2.default.sources.USER) return new l2.default();
         var o3 = null == n3 ? null : this.getSelection(), i3 = this.editor.delta, a3 = t3();
         if (null != o3 && (true === n3 && (n3 = o3.index), null == r3 ? o3 = x(o3, a3, e3) : 0 !== r3 && (o3 = x(o3, n3, r3, e3)), this.setSelection(o3, s2.default.sources.SILENT)), a3.length() > 0) {
-          var u2, c2, f2 = [s2.default.events.TEXT_CHANGE, a3, i3, e3];
-          (u2 = this.emitter).emit.apply(u2, [s2.default.events.EDITOR_CHANGE].concat(f2)), e3 !== s2.default.sources.SILENT && (c2 = this.emitter).emit.apply(c2, f2);
+          var u3, c2, f2 = [s2.default.events.TEXT_CHANGE, a3, i3, e3];
+          (u3 = this.emitter).emit.apply(u3, [s2.default.events.EDITOR_CHANGE].concat(f2)), e3 !== s2.default.sources.SILENT && (c2 = this.emitter).emit.apply(c2, f2);
         }
         return a3;
       }
@@ -709,9 +709,9 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if (null == t3) return null;
         var i3 = void 0, a3 = void 0;
         if (e3 instanceof l2.default) {
-          var u2 = [t3.index, t3.index + t3.length].map(function(t4) {
+          var u3 = [t3.index, t3.index + t3.length].map(function(t4) {
             return e3.transformPosition(t4, r3 !== s2.default.sources.USER);
-          }), c2 = o2(u2, 2);
+          }), c2 = o2(u3, 2);
           i3 = c2[0], a3 = c2[1];
         } else {
           var h2 = [t3.index, t3.index + t3.length].map(function(t4) {
@@ -722,7 +722,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return new f.Range(i3, a3 - i3);
       }
       m.DEFAULTS = { bounds: null, formats: null, modules: {}, placeholder: "", readOnly: false, scrollingContainer: null, strict: true, theme: "default" }, m.events = s2.default.events, m.sources = s2.default.sources, // eslint-disable-next-line no-undef
-      m.version = "1.3.7", m.imports = { delta: l2.default, parchment: c.default, "core/module": u.default, "core/theme": y.default }, e2.expandConfig = _, e2.overload = w, e2.default = m;
+      m.version = "1.3.7", m.imports = { delta: l2.default, parchment: c.default, "core/module": u2.default, "core/theme": y.default }, e2.expandConfig = _, e2.overload = w, e2.default = m;
     },
     /* 6 */
     /***/
@@ -916,14 +916,14 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
     function(t2, e2, n2) {
       var r2 = Array.prototype.slice, o2 = n2(52), i2 = n2(53), l2 = t2.exports = function(t3, e3, n3) {
         return n3 || (n3 = {}), t3 === e3 || (t3 instanceof Date && e3 instanceof Date ? t3.getTime() === e3.getTime() : !t3 || !e3 || "object" != typeof t3 && "object" != typeof e3 ? n3.strict ? t3 === e3 : t3 == e3 : function(t4, e4, n4) {
-          var u, c;
+          var u2, c;
           if (a2(t4) || a2(e4)) return false;
           if (t4.prototype !== e4.prototype) return false;
           if (i2(t4)) return !!i2(e4) && (t4 = r2.call(t4), e4 = r2.call(e4), l2(t4, e4, n4));
           if (s2(t4)) {
             if (!s2(e4)) return false;
             if (t4.length !== e4.length) return false;
-            for (u = 0; u < t4.length; u++) if (t4[u] !== e4[u]) return false;
+            for (u2 = 0; u2 < t4.length; u2++) if (t4[u2] !== e4[u2]) return false;
             return true;
           }
           try {
@@ -932,8 +932,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             return false;
           }
           if (f.length != h.length) return false;
-          for (f.sort(), h.sort(), u = f.length - 1; u >= 0; u--) if (f[u] != h[u]) return false;
-          for (u = f.length - 1; u >= 0; u--) if (c = f[u], !l2(t4[c], e4[c], n4)) return false;
+          for (f.sort(), h.sort(), u2 = f.length - 1; u2 >= 0; u2--) if (f[u2] != h[u2]) return false;
+          for (u2 = f.length - 1; u2 >= 0; u2--) if (c = f[u2], !l2(t4[c], e4[c], n4)) return false;
           return typeof t4 == typeof e4;
         }(t3, e3, n3));
       };
@@ -1019,7 +1019,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if ("value" in o3) return o3.value;
         var l3 = o3.get;
         return void 0 !== l3 ? l3.call(r3) : void 0;
-      }, l2 = f(n2(2)), a2 = f(n2(0)), s2 = f(n2(4)), u = f(n2(6)), c = f(n2(7));
+      }, l2 = f(n2(2)), a2 = f(n2(0)), s2 = f(n2(4)), u2 = f(n2(6)), c = f(n2(7));
       function f(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -1039,7 +1039,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           return h(this, e3), d(this, (e3.__proto__ || Object.getPrototypeOf(e3)).apply(this, arguments));
         }
         return p(e3, t3), e3;
-      }(u.default);
+      }(u2.default);
       y.blotName = "code", y.tagName = "CODE";
       var v = function(t3) {
         function e3() {
@@ -1060,8 +1060,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           if (0 !== n3 && null != a2.default.query(r3, a2.default.Scope.BLOCK) && (r3 !== this.statics.blotName || o3 !== this.statics.formats(this.domNode))) {
             var i3 = this.newlineIndex(t4);
             if (!(i3 < 0 || i3 >= t4 + n3)) {
-              var l3 = this.newlineIndex(t4, true) + 1, s3 = i3 - l3 + 1, u2 = this.isolate(l3, s3), c2 = u2.next;
-              u2.format(r3, o3), c2 instanceof e3 && c2.formatAt(0, t4 - l3 + n3 - s3, r3, o3);
+              var l3 = this.newlineIndex(t4, true) + 1, s3 = i3 - l3 + 1, u3 = this.isolate(l3, s3), c2 = u3.next;
+              u3.format(r3, o3), c2 instanceof e3 && c2.formatAt(0, t4 - l3 + n3 - s3, r3, o3);
             }
           }
         } }, { key: "insertAt", value: function(t4, e4, n3) {
@@ -1130,7 +1130,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return function(e3, n3, r3) {
           return n3 && t3(e3.prototype, n3), r3 && t3(e3, r3), e3;
         };
-      }(), l2 = b(n2(2)), a2 = b(n2(20)), s2 = b(n2(0)), u = b(n2(13)), c = b(n2(24)), f = n2(4), h = b(f), d = b(n2(16)), p = b(n2(21)), y = b(n2(11)), v = b(n2(3));
+      }(), l2 = b(n2(2)), a2 = b(n2(20)), s2 = b(n2(0)), u2 = b(n2(13)), c = b(n2(24)), f = n2(4), h = b(f), d = b(n2(16)), p = b(n2(21)), y = b(n2(11)), v = b(n2(3));
       function b(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -1157,7 +1157,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
               return t6.push(e4);
             }, new l2.default());
           }(t4)).reduce(function(t5, l3) {
-            var u2 = l3.retain || l3.delete || l3.insert.length || 1, c2 = l3.attributes || {};
+            var u3 = l3.retain || l3.delete || l3.insert.length || 1, c2 = l3.attributes || {};
             if (null != l3.insert) {
               if ("string" == typeof l3.insert) {
                 var d2 = l3.insert;
@@ -1173,11 +1173,11 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
                 if (null == w) return t5;
                 e3.scroll.insertAt(t5, w, l3.insert[w]);
               }
-              i3 += u2;
+              i3 += u3;
             }
             return Object.keys(c2).forEach(function(n4) {
-              e3.scroll.formatAt(t5, u2, n4, c2[n4]);
-            }), t5 + u2;
+              e3.scroll.formatAt(t5, u3, n4, c2[n4]);
+            }), t5 + u3;
           }, 0), t4.reduce(function(t5, n4) {
             return "number" == typeof n4.delete ? (e3.scroll.deleteAt(t5, n4.delete), t5) : t5 + (n4.retain || n4.insert.length || 1);
           }, 0), this.scroll.batchEnd(), this.update(t4);
@@ -1190,7 +1190,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
               var i3 = n3.scroll.lines(t4, Math.max(e3, 1)), l3 = e3;
               i3.forEach(function(e4) {
                 var i4 = e4.length();
-                if (e4 instanceof u.default) {
+                if (e4 instanceof u2.default) {
                   var a3 = t4 - e4.offset(n3.scroll), s3 = e4.newlineIndex(a3 + l3) - a3 + 1;
                   e4.formatAt(a3, s3, o3, r3[o3]);
                 } else e4.format(o3, r3[o3]);
@@ -1247,13 +1247,13 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           return t4.statics.blotName === h.default.blotName && !(t4.children.length > 1) && t4.children.head instanceof d.default;
         } }, { key: "removeFormat", value: function(t4, e3) {
           var n3 = this.getText(t4, e3), r3 = this.scroll.line(t4 + e3), i3 = o2(r3, 2), a3 = i3[0], s3 = i3[1], c2 = 0, f2 = new l2.default();
-          null != a3 && (c2 = a3 instanceof u.default ? a3.newlineIndex(s3) - s3 + 1 : a3.length() - s3, f2 = a3.delta().slice(s3, s3 + c2 - 1).insert("\n"));
+          null != a3 && (c2 = a3 instanceof u2.default ? a3.newlineIndex(s3) - s3 + 1 : a3.length() - s3, f2 = a3.delta().slice(s3, s3 + c2 - 1).insert("\n"));
           var h2 = this.getContents(t4, e3 + c2).diff(new l2.default().insert(n3).concat(f2)), d2 = new l2.default().retain(t4).concat(h2);
           return this.applyDelta(d2);
         } }, { key: "update", value: function(t4) {
           var e3 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [], n3 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : void 0, r3 = this.delta;
           if (1 === e3.length && "characterData" === e3[0].type && e3[0].target.data.match(g) && s2.default.find(e3[0].target)) {
-            var o3 = s2.default.find(e3[0].target), i3 = (0, f.bubbleFormats)(o3), a3 = o3.offset(this.scroll), u2 = e3[0].oldValue.replace(c.default.CONTENTS, ""), h2 = new l2.default().insert(u2), d2 = new l2.default().insert(o3.value());
+            var o3 = s2.default.find(e3[0].target), i3 = (0, f.bubbleFormats)(o3), a3 = o3.offset(this.scroll), u3 = e3[0].oldValue.replace(c.default.CONTENTS, ""), h2 = new l2.default().insert(u3), d2 = new l2.default().insert(o3.value());
             t4 = new l2.default().retain(a3).concat(h2.diff(d2, n3)).reduce(function(t5, e4) {
               return e4.insert ? t5.insert(e4.insert, i3) : t5.push(e4);
             }, new l2.default()), this.delta = r3.compose(t4);
@@ -1300,8 +1300,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return function(e3, n3, r3) {
           return n3 && t3(e3.prototype, n3), r3 && t3(e3, r3), e3;
         };
-      }(), i2 = u(n2(0)), l2 = u(n2(21)), a2 = u(n2(11)), s2 = u(n2(8));
-      function u(t3) {
+      }(), i2 = u2(n2(0)), l2 = u2(n2(21)), a2 = u2(n2(11)), s2 = u2(n2(8));
+      function u2(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
       function c(t3) {
@@ -1314,7 +1314,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       function f(t3, e3) {
         if (!(t3 instanceof e3)) throw new TypeError("Cannot call a class as a function");
       }
-      var h = (0, u(n2(10)).default)("quill:selection"), d = function t3(e3) {
+      var h = (0, u2(n2(10)).default)("quill:selection"), d = function t3(e3) {
         var n3 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0;
         f(this, t3), this.index = e3, this.length = n3;
       }, p = function() {
@@ -1388,7 +1388,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           t4 = Math.min(t4, n3 - 1), e3 = Math.min(t4 + e3, n3 - 1) - t4;
           var o3 = void 0, i3 = this.scroll.leaf(t4), l3 = r2(i3, 2), a3 = l3[0], s3 = l3[1];
           if (null == a3) return null;
-          var u2 = a3.position(s3, true), c2 = r2(u2, 2);
+          var u3 = a3.position(s3, true), c2 = r2(u3, 2);
           o3 = c2[0], s3 = c2[1];
           var f2 = document.createRange();
           if (e3 > 0) {
@@ -1435,7 +1435,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           var e3 = this, n3 = t4.collapsed ? [t4.index] : [t4.index, t4.index + t4.length], o3 = [], i3 = this.scroll.length();
           return n3.forEach(function(t5, n4) {
             t5 = Math.min(i3 - 1, t5);
-            var l3, a3 = e3.scroll.leaf(t5), s3 = r2(a3, 2), u2 = s3[0], c2 = s3[1], f2 = u2.position(c2, 0 !== n4), h2 = r2(f2, 2);
+            var l3, a3 = e3.scroll.leaf(t5), s3 = r2(a3, 2), u3 = s3[0], c2 = s3[1], f2 = u3.position(c2, 0 !== n4), h2 = r2(f2, 2);
             l3 = h2[0], c2 = h2[1], o3.push(l3, c2);
           }), o3.length < 2 && (o3 = o3.concat(o3)), o3;
         } }, { key: "scrollIntoView", value: function(t4) {
@@ -1449,8 +1449,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
                 a3 = r2(s3, 1)[0];
               }
               if (null != l3 && null != a3) {
-                var u2 = t4.getBoundingClientRect();
-                n3.top < u2.top ? t4.scrollTop -= u2.top - n3.top : n3.bottom > u2.bottom && (t4.scrollTop += n3.bottom - u2.bottom);
+                var u3 = t4.getBoundingClientRect();
+                n3.top < u3.top ? t4.scrollTop -= u3.top - n3.top : n3.bottom > u3.bottom && (t4.scrollTop += n3.bottom - u3.bottom);
               }
             }
           }
@@ -1476,10 +1476,10 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           } else this.setNativeRange(null);
           this.update(n3);
         } }, { key: "update", value: function() {
-          var t4 = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : s2.default.sources.USER, e3 = this.lastRange, n3 = this.getRange(), o3 = r2(n3, 2), i3 = o3[0], u2 = o3[1];
+          var t4 = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : s2.default.sources.USER, e3 = this.lastRange, n3 = this.getRange(), o3 = r2(n3, 2), i3 = o3[0], u3 = o3[1];
           if (this.lastRange = i3, null != this.lastRange && (this.savedRange = this.lastRange), !(0, a2.default)(e3, this.lastRange)) {
             var c2;
-            !this.composing && null != u2 && u2.native.collapsed && u2.start.node !== this.cursor.textNode && this.cursor.restore();
+            !this.composing && null != u3 && u3.native.collapsed && u3.start.node !== this.cursor.textNode && this.cursor.restore();
             var f2, h2 = [s2.default.events.SELECTION_CHANGE, (0, l2.default)(this.lastRange), (0, l2.default)(e3), t4];
             (c2 = this.emitter).emit.apply(c2, [s2.default.events.EDITOR_CHANGE].concat(h2)), t4 !== s2.default.sources.SILENT && (f2 = this.emitter).emit.apply(f2, h2);
           }
@@ -1574,7 +1574,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             this.children = new i2.default(), // Need to be reversed for if DOM nodes already in order
             [].slice.call(this.domNode.childNodes).reverse().forEach(function(e4) {
               try {
-                var n3 = u(e4);
+                var n3 = u2(e4);
                 t4.insertBefore(n3, t4.children.head || void 0);
               } catch (t5) {
                 if (t5 instanceof a2.ParchmentError) return;
@@ -1664,13 +1664,13 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             }).forEach(function(t5) {
               var e5 = null;
               null != t5.nextSibling && (e5 = a2.find(t5.nextSibling));
-              var r4 = u(t5);
+              var r4 = u2(t5);
               r4.next == e5 && null != r4.next || (null != r4.parent && r4.parent.removeChild(n3), n3.insertBefore(r4, e5 || void 0));
             });
           }, e3;
         }(l2.default)
       );
-      function u(t3) {
+      function u2(t3) {
         var e3 = a2.find(t3);
         if (null == e3) try {
           e3 = a2.create(t3);
@@ -1697,7 +1697,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         r2(t3, e3), t3.prototype = null === e3 ? Object.create(e3) : (n3.prototype = e3.prototype, new n3());
       });
       Object.defineProperty(e2, "__esModule", { value: true });
-      var i2 = n2(12), l2 = n2(31), a2 = n2(17), s2 = n2(1), u = (
+      var i2 = n2(12), l2 = n2(31), a2 = n2(17), s2 = n2(1), u2 = (
         /** @class */
         function(t3) {
           function e3(e4) {
@@ -1726,7 +1726,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           }, e3;
         }(a2.default)
       );
-      e2.default = u;
+      e2.default = u2;
     },
     /* 19 */
     /***/
@@ -1852,8 +1852,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           r2 = function() {
           };
         }
-        function o2(i3, a2, s2, u, c) {
-          "object" == typeof a2 && (s2 = a2.depth, u = a2.prototype, c = a2.includeNonEnumerable, a2 = a2.circular);
+        function o2(i3, a2, s2, u2, c) {
+          "object" == typeof a2 && (s2 = a2.depth, u2 = a2.prototype, c = a2.includeNonEnumerable, a2 = a2.circular);
           var f = [], h = [], d = "undefined" != typeof Buffer;
           return void 0 === a2 && (a2 = true), void 0 === s2 && (s2 = 1 / 0), // recurse this function so we don't reset allParents and allChildren
           function i4(s3, p) {
@@ -1876,7 +1876,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             else {
               if (d && Buffer.isBuffer(s3))
                 return y = Buffer.allocUnsafe ? Buffer.allocUnsafe(s3.length) : new Buffer(s3.length), s3.copy(y), y;
-              t3(s3, Error) ? y = Object.create(s3) : void 0 === u ? (v = Object.getPrototypeOf(s3), y = Object.create(v)) : (y = Object.create(u), v = u);
+              t3(s3, Error) ? y = Object.create(s3) : void 0 === u2 ? (v = Object.getPrototypeOf(s3), y = Object.create(v)) : (y = Object.create(u2), v = u2);
             }
             if (a2) {
               var b = f.indexOf(s3);
@@ -1974,12 +1974,12 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if ("value" in o3) return o3.value;
         var l3 = o3.get;
         return void 0 !== l3 ? l3.call(r3) : void 0;
-      }, l2 = d(n2(0)), a2 = d(n2(8)), s2 = n2(4), u = d(s2), c = d(n2(16)), f = d(n2(13)), h = d(n2(25));
+      }, l2 = d(n2(0)), a2 = d(n2(8)), s2 = n2(4), u2 = d(s2), c = d(n2(16)), f = d(n2(13)), h = d(n2(25));
       function d(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
       function p(t3) {
-        return t3 instanceof u.default || t3 instanceof s2.BlockEmbed;
+        return t3 instanceof u2.default || t3 instanceof s2.BlockEmbed;
       }
       var y = function(t3) {
         function e3(t4, n3) {
@@ -2004,8 +2004,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         } }, { key: "batchEnd", value: function() {
           this.batch = false, this.optimize();
         } }, { key: "deleteAt", value: function(t4, n3) {
-          var o3 = this.line(t4), l3 = r2(o3, 2), a3 = l3[0], u2 = l3[1], h2 = this.line(t4 + n3), d2 = r2(h2, 1)[0];
-          if (i2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "deleteAt", this).call(this, t4, n3), null != d2 && a3 !== d2 && u2 > 0) {
+          var o3 = this.line(t4), l3 = r2(o3, 2), a3 = l3[0], u3 = l3[1], h2 = this.line(t4 + n3), d2 = r2(h2, 1)[0];
+          if (i2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "deleteAt", this).call(this, t4, n3), null != d2 && a3 !== d2 && u3 > 0) {
             if (a3 instanceof s2.BlockEmbed || d2 instanceof s2.BlockEmbed) return void this.optimize();
             if (a3 instanceof f.default) {
               var p2 = a3.newlineIndex(a3.length(), true);
@@ -2065,7 +2065,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           }
         } }]), e3;
       }(l2.default.Scroll);
-      y.blotName = "scroll", y.className = "ql-editor", y.tagName = "DIV", y.defaultChild = "block", y.allowedChildren = [u.default, s2.BlockEmbed, h.default], e2.default = y;
+      y.blotName = "scroll", y.className = "ql-editor", y.tagName = "DIV", y.defaultChild = "block", y.allowedChildren = [u2.default, s2.BlockEmbed, h.default], e2.default = y;
     },
     /* 23 */
     /***/
@@ -2103,7 +2103,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return function(e3, n3, r3) {
           return n3 && t3(e3.prototype, n3), r3 && t3(e3, r3), e3;
         };
-      }(), l2 = y(n2(21)), a2 = y(n2(11)), s2 = y(n2(3)), u = y(n2(2)), c = y(n2(20)), f = y(n2(0)), h = y(n2(5)), d = y(n2(10)), p = y(n2(9));
+      }(), l2 = y(n2(21)), a2 = y(n2(11)), s2 = y(n2(3)), u2 = y(n2(2)), c = y(n2(20)), f = y(n2(0)), h = y(n2(5)), d = y(n2(10)), p = y(n2(9));
       function y(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -2148,7 +2148,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
               if (0 !== l3.length) {
                 var s3 = t4.quill.getSelection();
                 if (null != s3 && t4.quill.hasFocus()) {
-                  var u2 = t4.quill.getLine(s3.index), c2 = o2(u2, 2), h2 = c2[0], d2 = c2[1], p2 = t4.quill.getLeaf(s3.index), y2 = o2(p2, 2), v2 = y2[0], b2 = y2[1], g2 = 0 === s3.length ? [v2, b2] : t4.quill.getLeaf(s3.index + s3.length), m2 = o2(g2, 2), _2 = m2[0], O2 = m2[1], w2 = v2 instanceof f.default.Text ? v2.value().slice(0, b2) : "", x2 = _2 instanceof f.default.Text ? _2.value().slice(O2) : "", k2 = { collapsed: 0 === s3.length, empty: 0 === s3.length && h2.length() <= 1, format: t4.quill.getFormat(s3), offset: d2, prefix: w2, suffix: x2 };
+                  var u3 = t4.quill.getLine(s3.index), c2 = o2(u3, 2), h2 = c2[0], d2 = c2[1], p2 = t4.quill.getLeaf(s3.index), y2 = o2(p2, 2), v2 = y2[0], b2 = y2[1], g2 = 0 === s3.length ? [v2, b2] : t4.quill.getLeaf(s3.index + s3.length), m2 = o2(g2, 2), _2 = m2[0], O2 = m2[1], w2 = v2 instanceof f.default.Text ? v2.value().slice(0, b2) : "", x2 = _2 instanceof f.default.Text ? _2.value().slice(O2) : "", k2 = { collapsed: 0 === s3.length, empty: 0 === s3.length && h2.length() <= 1, format: t4.quill.getFormat(s3), offset: d2, prefix: w2, suffix: x2 };
                   l3.some(function(e4) {
                     if (null != e4.collapsed && e4.collapsed !== k2.collapsed) return false;
                     if (null != e4.empty && e4.empty !== k2.empty) return false;
@@ -2183,8 +2183,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           if (0 === e3.offset) {
             var l3 = this.quill.getLine(t3.index - 1), a3 = o2(l3, 1)[0];
             if (null != a3 && a3.length() > 1) {
-              var s3 = r3.formats(), u2 = this.quill.getFormat(t3.index - 1, 1);
-              i3 = c.default.attributes.diff(s3, u2) || {};
+              var s3 = r3.formats(), u3 = this.quill.getFormat(t3.index - 1, 1);
+              i3 = c.default.attributes.diff(s3, u3) || {};
             }
           }
           var f2 = /[\uD800-\uDBFF][\uDC00-\uDFFF]$/.test(e3.prefix) ? 2 : 1;
@@ -2196,10 +2196,10 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if (!(t3.index >= this.quill.getLength() - n3)) {
           var r3 = {}, i3 = 0, l3 = this.quill.getLine(t3.index), a3 = o2(l3, 1)[0];
           if (e3.offset >= a3.length() - 1) {
-            var s3 = this.quill.getLine(t3.index + 1), u2 = o2(s3, 1)[0];
-            if (u2) {
+            var s3 = this.quill.getLine(t3.index + 1), u3 = o2(s3, 1)[0];
+            if (u3) {
               var f2 = a3.formats(), d2 = this.quill.getFormat(t3.index, 1);
-              r3 = c.default.attributes.diff(f2, d2) || {}, i3 = u2.length();
+              r3 = c.default.attributes.diff(f2, d2) || {}, i3 = u3.length();
             }
           }
           this.quill.deleteText(t3.index, n3, h.default.sources.USER), Object.keys(r3).length > 0 && this.quill.formatLine(t3.index + i3 - 1, n3, r3, h.default.sources.USER);
@@ -2227,11 +2227,11 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       }
       function E(t3) {
         return { key: m.keys.TAB, shiftKey: !t3, format: { "code-block": true }, handler: function(e3) {
-          var n3 = f.default.query("code-block"), r3 = e3.index, i3 = e3.length, l3 = this.quill.scroll.descendant(n3, r3), a3 = o2(l3, 2), s3 = a3[0], u2 = a3[1];
+          var n3 = f.default.query("code-block"), r3 = e3.index, i3 = e3.length, l3 = this.quill.scroll.descendant(n3, r3), a3 = o2(l3, 2), s3 = a3[0], u3 = a3[1];
           if (null != s3) {
-            var c2 = this.quill.getIndex(s3), d2 = s3.newlineIndex(u2, true) + 1, p2 = s3.newlineIndex(c2 + u2 + i3), y2 = s3.domNode.textContent.slice(d2, p2).split("\n");
-            u2 = 0, y2.forEach(function(e4, o3) {
-              t3 ? (s3.insertAt(d2 + u2, n3.TAB), u2 += n3.TAB.length, 0 === o3 ? r3 += n3.TAB.length : i3 += n3.TAB.length) : e4.startsWith(n3.TAB) && (s3.deleteAt(d2 + u2, n3.TAB.length), u2 -= n3.TAB.length, 0 === o3 ? r3 -= n3.TAB.length : i3 -= n3.TAB.length), u2 += e4.length + 1;
+            var c2 = this.quill.getIndex(s3), d2 = s3.newlineIndex(u3, true) + 1, p2 = s3.newlineIndex(c2 + u3 + i3), y2 = s3.domNode.textContent.slice(d2, p2).split("\n");
+            u3 = 0, y2.forEach(function(e4, o3) {
+              t3 ? (s3.insertAt(d2 + u3, n3.TAB), u3 += n3.TAB.length, 0 === o3 ? r3 += n3.TAB.length : i3 += n3.TAB.length) : e4.startsWith(n3.TAB) && (s3.deleteAt(d2 + u3, n3.TAB.length), u3 -= n3.TAB.length, 0 === o3 ? r3 -= n3.TAB.length : i3 -= n3.TAB.length), u3 += e4.length + 1;
             }), this.quill.update(h.default.sources.USER), this.quill.setSelection(r3, i3, h.default.sources.SILENT);
           }
         } };
@@ -2273,15 +2273,15 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         this.quill.deleteText(t3.index - 1, 1, h.default.sources.USER);
       } }, tab: { key: m.keys.TAB, handler: function(t3) {
         this.quill.history.cutoff();
-        var e3 = new u.default().retain(t3.index).delete(t3.length).insert("	");
+        var e3 = new u2.default().retain(t3.index).delete(t3.length).insert("	");
         this.quill.updateContents(e3, h.default.sources.USER), this.quill.history.cutoff(), this.quill.setSelection(t3.index + 1, h.default.sources.SILENT);
       } }, "list empty enter": { key: m.keys.ENTER, collapsed: true, format: ["list"], empty: true, handler: function(t3, e3) {
         this.quill.format("list", false, h.default.sources.USER), e3.format.indent && this.quill.format("indent", false, h.default.sources.USER);
       } }, "checklist enter": { key: m.keys.ENTER, collapsed: true, format: { list: "checked" }, handler: function(t3) {
-        var e3 = this.quill.getLine(t3.index), n3 = o2(e3, 2), r3 = n3[0], i3 = n3[1], l3 = (0, s2.default)({}, r3.formats(), { list: "checked" }), a3 = new u.default().retain(t3.index).insert("\n", l3).retain(r3.length() - i3 - 1).retain(1, { list: "unchecked" });
+        var e3 = this.quill.getLine(t3.index), n3 = o2(e3, 2), r3 = n3[0], i3 = n3[1], l3 = (0, s2.default)({}, r3.formats(), { list: "checked" }), a3 = new u2.default().retain(t3.index).insert("\n", l3).retain(r3.length() - i3 - 1).retain(1, { list: "unchecked" });
         this.quill.updateContents(a3, h.default.sources.USER), this.quill.setSelection(t3.index + 1, h.default.sources.SILENT), this.quill.scrollIntoView();
       } }, "header enter": { key: m.keys.ENTER, collapsed: true, format: ["header"], suffix: /^$/, handler: function(t3, e3) {
-        var n3 = this.quill.getLine(t3.index), r3 = o2(n3, 2), i3 = r3[0], l3 = r3[1], a3 = new u.default().retain(t3.index).insert("\n", e3.format).retain(i3.length() - l3 - 1).retain(1, { header: null });
+        var n3 = this.quill.getLine(t3.index), r3 = o2(n3, 2), i3 = r3[0], l3 = r3[1], a3 = new u2.default().retain(t3.index).insert("\n", e3.format).retain(i3.length() - l3 - 1).retain(1, { header: null });
         this.quill.updateContents(a3, h.default.sources.USER), this.quill.setSelection(t3.index + 1, h.default.sources.SILENT), this.quill.scrollIntoView();
       } }, "list autofill": { key: " ", collapsed: true, format: { list: false }, prefix: /^\s*?(\d+\.|-|\*|\[ ?\]|\[x\])$/, handler: function(t3, e3) {
         var n3 = e3.prefix.length, r3 = this.quill.getLine(t3.index), i3 = o2(r3, 2), l3 = i3[0], a3 = i3[1];
@@ -2303,10 +2303,10 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             s3 = "ordered";
         }
         this.quill.insertText(t3.index, " ", h.default.sources.USER), this.quill.history.cutoff();
-        var c2 = new u.default().retain(t3.index - a3).delete(n3 + 1).retain(l3.length() - 2 - a3).retain(1, { list: s3 });
+        var c2 = new u2.default().retain(t3.index - a3).delete(n3 + 1).retain(l3.length() - 2 - a3).retain(1, { list: s3 });
         this.quill.updateContents(c2, h.default.sources.USER), this.quill.history.cutoff(), this.quill.setSelection(t3.index - n3, h.default.sources.SILENT);
       } }, "code exit": { key: m.keys.ENTER, collapsed: true, format: ["code-block"], prefix: /\n\n$/, suffix: /^\s+$/, handler: function(t3) {
-        var e3 = this.quill.getLine(t3.index), n3 = o2(e3, 2), r3 = n3[0], i3 = n3[1], l3 = new u.default().retain(t3.index + r3.length() - i3 - 2).retain(1, { "code-block": null }).delete(1);
+        var e3 = this.quill.getLine(t3.index), n3 = o2(e3, 2), r3 = n3[0], i3 = n3[1], l3 = new u2.default().retain(t3.index + r3.length() - i3 - 2).retain(1, { "code-block": null }).delete(1);
         this.quill.updateContents(l3, h.default.sources.USER);
       } }, "embed left": _(m.keys.LEFT, false), "embed left shift": _(m.keys.LEFT, true), "embed right": _(m.keys.RIGHT, false), "embed right shift": _(m.keys.RIGHT, true) } }, e2.default = m, e2.SHORTKEY = g;
     },
@@ -2356,7 +2356,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       function s2(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
-      var u = function(t3) {
+      var u2 = function(t3) {
         function e3(t4, n3) {
           !function(t5, e4) {
             if (!(t5 instanceof e4)) throw new TypeError("Cannot call a class as a function");
@@ -2389,8 +2389,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           if (!this.selection.composing && null != this.parent) {
             var t4 = this.textNode, n3 = this.selection.getNativeRange(), o3 = void 0, i3 = void 0, s3 = void 0;
             if (null != n3 && n3.start.node === t4 && n3.end.node === t4) {
-              var u2 = [t4, n3.start.offset, n3.end.offset];
-              o3 = u2[0], i3 = u2[1], s3 = u2[2];
+              var u3 = [t4, n3.start.offset, n3.end.offset];
+              o3 = u3[0], i3 = u3[1], s3 = u3[2];
             }
             for (; null != this.domNode.lastChild && this.domNode.lastChild !== this.textNode; ) this.domNode.parentNode.insertBefore(this.domNode.lastChild, this.domNode);
             if (this.textNode.data !== e3.CONTENTS) {
@@ -2416,8 +2416,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           return "";
         } }]), e3;
       }(l2.default.Embed);
-      u.blotName = "cursor", u.className = "ql-cursor", u.tagName = "span", u.CONTENTS = "\uFEFF", // Zero width no break space
-      e2.default = u;
+      u2.blotName = "cursor", u2.className = "ql-cursor", u2.tagName = "span", u2.CONTENTS = "\uFEFF", // Zero width no break space
+      e2.default = u2;
     },
     /* 25 */
     /***/
@@ -2485,8 +2485,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             return ("00" + parseInt(t5).toString(16)).slice(-2);
           }).join("")) : n3;
         } }]), e3;
-      }(a2.default.Attributor.Style), u = new a2.default.Attributor.Class("color", "ql-color", { scope: a2.default.Scope.INLINE }), c = new s2("color", "color", { scope: a2.default.Scope.INLINE });
-      e2.ColorAttributor = s2, e2.ColorClass = u, e2.ColorStyle = c;
+      }(a2.default.Attributor.Style), u2 = new a2.default.Attributor.Class("color", "ql-color", { scope: a2.default.Scope.INLINE }), c = new s2("color", "color", { scope: a2.default.Scope.INLINE });
+      e2.ColorAttributor = s2, e2.ColorClass = u2, e2.ColorStyle = c;
     },
     /* 27 */
     /***/
@@ -2567,7 +2567,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
       var s2 = 0;
-      function u(t3, e3) {
+      function u2(t3, e3) {
         t3.setAttribute(e3, !("true" === t3.getAttribute(e3)));
       }
       var c = function() {
@@ -2591,7 +2591,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         }
         return o2(t3, [{ key: "togglePicker", value: function() {
           this.container.classList.toggle("ql-expanded"), // Toggle aria-expanded and aria-hidden to make the picker accessible
-          u(this.label, "aria-expanded"), u(this.options, "aria-hidden");
+          u2(this.label, "aria-expanded"), u2(this.options, "aria-hidden");
         } }, { key: "buildItem", value: function(t4) {
           var e3 = this, n3 = document.createElement("span");
           return n3.tabIndex = "0", n3.setAttribute("role", "button"), n3.classList.add("ql-picker-item"), t4.hasAttribute("value") && n3.setAttribute("data-value", t4.getAttribute("value")), t4.textContent && n3.setAttribute("data-label", t4.textContent), n3.addEventListener("click", function() {
@@ -2658,11 +2658,11 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
     /***/
     function(t2, e2, n2) {
       Object.defineProperty(e2, "__esModule", { value: true });
-      var r2 = b(n2(0)), o2 = b(n2(5)), i2 = n2(4), l2 = b(i2), a2 = b(n2(16)), s2 = b(n2(25)), u = b(n2(24)), c = b(n2(35)), f = b(n2(6)), h = b(n2(22)), d = b(n2(7)), p = b(n2(55)), y = b(n2(42)), v = b(n2(23));
+      var r2 = b(n2(0)), o2 = b(n2(5)), i2 = n2(4), l2 = b(i2), a2 = b(n2(16)), s2 = b(n2(25)), u2 = b(n2(24)), c = b(n2(35)), f = b(n2(6)), h = b(n2(22)), d = b(n2(7)), p = b(n2(55)), y = b(n2(42)), v = b(n2(23));
       function b(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
-      o2.default.register({ "blots/block": l2.default, "blots/block/embed": i2.BlockEmbed, "blots/break": a2.default, "blots/container": s2.default, "blots/cursor": u.default, "blots/embed": c.default, "blots/inline": f.default, "blots/scroll": h.default, "blots/text": d.default, "modules/clipboard": p.default, "modules/history": y.default, "modules/keyboard": v.default }), r2.default.register(l2.default, a2.default, u.default, f.default, h.default, d.default), e2.default = o2.default;
+      o2.default.register({ "blots/block": l2.default, "blots/block/embed": i2.BlockEmbed, "blots/break": a2.default, "blots/container": s2.default, "blots/cursor": u2.default, "blots/embed": c.default, "blots/inline": f.default, "blots/scroll": h.default, "blots/text": d.default, "modules/clipboard": p.default, "modules/history": y.default, "modules/keyboard": v.default }), r2.default.register(l2.default, a2.default, u2.default, f.default, h.default, d.default), e2.default = o2.default;
     },
     /* 30 */
     /***/
@@ -2925,7 +2925,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       function a2(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
-      var s2 = "\uFEFF", u = function(t3) {
+      var s2 = "\uFEFF", u2 = function(t3) {
         function e3(t4) {
           !function(t5, e4) {
             if (!(t5 instanceof e4)) throw new TypeError("Cannot call a class as a function");
@@ -2961,14 +2961,14 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           });
         } }]), e3;
       }(i2.default.Embed);
-      e2.default = u;
+      e2.default = u2;
     },
     /* 36 */
     /***/
     function(t2, e2, n2) {
       Object.defineProperty(e2, "__esModule", { value: true }), e2.AlignStyle = e2.AlignClass = e2.AlignAttribute = void 0;
-      var r2, o2 = n2(0), i2 = (r2 = o2) && r2.__esModule ? r2 : { default: r2 }, l2 = { scope: i2.default.Scope.BLOCK, whitelist: ["right", "center", "justify"] }, a2 = new i2.default.Attributor.Attribute("align", "align", l2), s2 = new i2.default.Attributor.Class("align", "ql-align", l2), u = new i2.default.Attributor.Style("align", "text-align", l2);
-      e2.AlignAttribute = a2, e2.AlignClass = s2, e2.AlignStyle = u;
+      var r2, o2 = n2(0), i2 = (r2 = o2) && r2.__esModule ? r2 : { default: r2 }, l2 = { scope: i2.default.Scope.BLOCK, whitelist: ["right", "center", "justify"] }, a2 = new i2.default.Attributor.Attribute("align", "align", l2), s2 = new i2.default.Attributor.Class("align", "ql-align", l2), u2 = new i2.default.Attributor.Style("align", "text-align", l2);
+      e2.AlignAttribute = a2, e2.AlignClass = s2, e2.AlignStyle = u2;
     },
     /* 37 */
     /***/
@@ -2981,8 +2981,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
     /***/
     function(t2, e2, n2) {
       Object.defineProperty(e2, "__esModule", { value: true }), e2.DirectionStyle = e2.DirectionClass = e2.DirectionAttribute = void 0;
-      var r2, o2 = n2(0), i2 = (r2 = o2) && r2.__esModule ? r2 : { default: r2 }, l2 = { scope: i2.default.Scope.BLOCK, whitelist: ["rtl"] }, a2 = new i2.default.Attributor.Attribute("direction", "dir", l2), s2 = new i2.default.Attributor.Class("direction", "ql-direction", l2), u = new i2.default.Attributor.Style("direction", "direction", l2);
-      e2.DirectionAttribute = a2, e2.DirectionClass = s2, e2.DirectionStyle = u;
+      var r2, o2 = n2(0), i2 = (r2 = o2) && r2.__esModule ? r2 : { default: r2 }, l2 = { scope: i2.default.Scope.BLOCK, whitelist: ["rtl"] }, a2 = new i2.default.Attributor.Attribute("direction", "dir", l2), s2 = new i2.default.Attributor.Class("direction", "ql-direction", l2), u2 = new i2.default.Attributor.Style("direction", "direction", l2);
+      e2.DirectionAttribute = a2, e2.DirectionClass = s2, e2.DirectionStyle = u2;
     },
     /* 39 */
     /***/
@@ -3008,7 +3008,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if ("value" in o3) return o3.value;
         var l3 = o3.get;
         return void 0 !== l3 ? l3.call(r3) : void 0;
-      }, l2 = n2(0), a2 = (r2 = l2) && r2.__esModule ? r2 : { default: r2 }, s2 = { scope: a2.default.Scope.INLINE, whitelist: ["serif", "monospace"] }, u = new a2.default.Attributor.Class("font", "ql-font", s2), c = function(t3) {
+      }, l2 = n2(0), a2 = (r2 = l2) && r2.__esModule ? r2 : { default: r2 }, s2 = { scope: a2.default.Scope.INLINE, whitelist: ["serif", "monospace"] }, u2 = new a2.default.Attributor.Class("font", "ql-font", s2), c = function(t3) {
         function e3() {
           return function(t4, e4) {
             if (!(t4 instanceof e4)) throw new TypeError("Cannot call a class as a function");
@@ -3024,7 +3024,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           return i2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "value", this).call(this, t4).replace(/["']/g, "");
         } }]), e3;
       }(a2.default.Attributor.Style), f = new c("font", "font-family", s2);
-      e2.FontStyle = f, e2.FontClass = u;
+      e2.FontStyle = f, e2.FontClass = u2;
     },
     /* 40 */
     /***/
@@ -3142,7 +3142,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if ("value" in o3) return o3.value;
         var l3 = o3.get;
         return void 0 !== l3 ? l3.call(r3) : void 0;
-      }, i2 = p(n2(3)), l2 = p(n2(2)), a2 = p(n2(8)), s2 = p(n2(23)), u = p(n2(34)), c = p(n2(59)), f = p(n2(60)), h = p(n2(28)), d = p(n2(61));
+      }, i2 = p(n2(3)), l2 = p(n2(2)), a2 = p(n2(8)), s2 = p(n2(23)), u2 = p(n2(34)), c = p(n2(59)), f = p(n2(60)), h = p(n2(28)), d = p(n2(61));
       function p(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -3197,8 +3197,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             });
           });
         } }]), e3;
-      }(u.default);
-      x.DEFAULTS = (0, i2.default)(true, {}, u.default.DEFAULTS, { modules: { toolbar: { handlers: { formula: function() {
+      }(u2.default);
+      x.DEFAULTS = (0, i2.default)(true, {}, u2.default.DEFAULTS, { modules: { toolbar: { handlers: { formula: function() {
         this.quill.theme.tooltip.edit("formula");
       }, image: function() {
         var t3 = this, e3 = this.container.querySelector("input.ql-image[type=file]");
@@ -3365,9 +3365,9 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             }, s3 = function(t4) {
               null != t4.domNode[l2.DATA_KEY] && // @ts-ignore
               null != t4.domNode[l2.DATA_KEY].mutations && (t4 instanceof i2.default && t4.children.forEach(s3), t4.optimize(n3));
-            }, u = e4, c = 0; u.length > 0; c += 1) {
+            }, u2 = e4, c = 0; u2.length > 0; c += 1) {
               if (c >= 100) throw new Error("[Parchment] Maximum optimize iterations reached");
-              for (u.forEach(function(t4) {
+              for (u2.forEach(function(t4) {
                 var e5 = l2.find(t4.target, true);
                 null != e5 && (e5.domNode === t4.target && ("childList" === t4.type ? (a3(l2.find(t4.previousSibling, false)), [].forEach.call(t4.addedNodes, function(t5) {
                   var e6 = l2.find(t5, false);
@@ -3375,7 +3375,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
                     a3(t6, false);
                   });
                 })) : "attributes" === t4.type && a3(e5.prev)), a3(e5));
-              }), this.children.forEach(s3), o3 = (u = [].slice.call(this.observer.takeRecords())).slice(); o3.length > 0; ) e4.push(o3.pop());
+              }), this.children.forEach(s3), o3 = (u2 = [].slice.call(this.observer.takeRecords())).slice(); o3.length > 0; ) e4.push(o3.pop());
             }
           }, e3.prototype.update = function(e4, n3) {
             var r3 = this;
@@ -3629,11 +3629,11 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
               return [[1, e4]];
             if (!e4)
               return [[n2, t4]];
-            var s4 = t4.length > e4.length ? t4 : e4, u2 = t4.length > e4.length ? e4 : t4, c2 = s4.indexOf(u2);
+            var s4 = t4.length > e4.length ? t4 : e4, u3 = t4.length > e4.length ? e4 : t4, c2 = s4.indexOf(u3);
             if (-1 != c2)
-              return a3 = [[1, s4.substring(0, c2)], [0, u2], [1, s4.substring(c2 + u2.length)]], // Swap insertions for deletions if diff is reversed.
+              return a3 = [[1, s4.substring(0, c2)], [0, u3], [1, s4.substring(c2 + u3.length)]], // Swap insertions for deletions if diff is reversed.
               t4.length > e4.length && (a3[0][0] = a3[2][0] = n2), a3;
-            if (1 == u2.length)
+            if (1 == u3.length)
               return [[n2, t4], [1, e4]];
             var f2 = (
               /**
@@ -3650,17 +3650,17 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
                 var n3 = t5.length > e5.length ? t5 : e5, r3 = t5.length > e5.length ? e5 : t5;
                 if (n3.length < 4 || 2 * r3.length < n3.length) return null;
                 function o3(t6, e6, n4) {
-                  for (var r4, o4, a5, s6, u4 = t6.substring(n4, n4 + Math.floor(t6.length / 4)), c4 = -1, f4 = ""; -1 != (c4 = e6.indexOf(u4, c4 + 1)); ) {
+                  for (var r4, o4, a5, s6, u5 = t6.substring(n4, n4 + Math.floor(t6.length / 4)), c4 = -1, f4 = ""; -1 != (c4 = e6.indexOf(u5, c4 + 1)); ) {
                     var h4 = i2(t6.substring(n4), e6.substring(c4)), d4 = l2(t6.substring(0, n4), e6.substring(0, c4));
                     f4.length < d4 + h4 && (f4 = e6.substring(c4 - d4, c4) + e6.substring(c4, c4 + h4), r4 = t6.substring(0, n4 - d4), o4 = t6.substring(n4 + h4), a5 = e6.substring(0, c4 - d4), s6 = e6.substring(c4 + h4));
                   }
                   return 2 * f4.length >= t6.length ? [r4, o4, a5, s6, f4] : null;
                 }
-                var a4, s5, u3, c3, f3, h3 = o3(n3, r3, Math.ceil(n3.length / 4)), d3 = o3(n3, r3, Math.ceil(n3.length / 2));
+                var a4, s5, u4, c3, f3, h3 = o3(n3, r3, Math.ceil(n3.length / 4)), d3 = o3(n3, r3, Math.ceil(n3.length / 2));
                 if (!h3 && !d3) return null;
-                a4 = d3 ? h3 && h3[4].length > d3[4].length ? h3 : d3 : h3, t5.length > e5.length ? (s5 = a4[0], u3 = a4[1], c3 = a4[2], f3 = a4[3]) : (c3 = a4[0], f3 = a4[1], s5 = a4[2], u3 = a4[3]);
+                a4 = d3 ? h3 && h3[4].length > d3[4].length ? h3 : d3 : h3, t5.length > e5.length ? (s5 = a4[0], u4 = a4[1], c3 = a4[2], f3 = a4[3]) : (c3 = a4[0], f3 = a4[1], s5 = a4[2], u4 = a4[3]);
                 var p2 = a4[4];
-                return [s5, u3, c3, f3, p2];
+                return [s5, u4, c3, f3, p2];
               }(t4, e4)
             );
             if (f2) {
@@ -3668,12 +3668,12 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
               return b.concat([[0, v]], g);
             }
             return function(t5, e5) {
-              for (var r3 = t5.length, i3 = e5.length, l3 = Math.ceil((r3 + i3) / 2), a4 = l3, s5 = 2 * l3, u3 = new Array(s5), c3 = new Array(s5), f3 = 0; f3 < s5; f3++) u3[f3] = -1, c3[f3] = -1;
-              u3[a4 + 1] = 0, c3[a4 + 1] = 0;
+              for (var r3 = t5.length, i3 = e5.length, l3 = Math.ceil((r3 + i3) / 2), a4 = l3, s5 = 2 * l3, u4 = new Array(s5), c3 = new Array(s5), f3 = 0; f3 < s5; f3++) u4[f3] = -1, c3[f3] = -1;
+              u4[a4 + 1] = 0, c3[a4 + 1] = 0;
               for (var h3 = r3 - i3, d3 = h3 % 2 != 0, p2 = 0, y2 = 0, v2 = 0, b2 = 0, g2 = 0; g2 < l3; g2++) {
                 for (var m = -g2 + p2; m <= g2 - y2; m += 2) {
-                  for (var _ = a4 + m, O = (N = m == -g2 || m != g2 && u3[_ - 1] < u3[_ + 1] ? u3[_ + 1] : u3[_ - 1] + 1) - m; N < r3 && O < i3 && t5.charAt(N) == e5.charAt(O); ) N++, O++;
-                  if (u3[_] = N, N > r3)
+                  for (var _ = a4 + m, O = (N = m == -g2 || m != g2 && u4[_ - 1] < u4[_ + 1] ? u4[_ + 1] : u4[_ - 1] + 1) - m; N < r3 && O < i3 && t5.charAt(N) == e5.charAt(O); ) N++, O++;
+                  if (u4[_] = N, N > r3)
                     y2 += 2;
                   else if (O > i3)
                     p2 += 2;
@@ -3688,7 +3688,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
                     v2 += 2;
                   else if (!d3) {
                     var N;
-                    if ((_ = a4 + h3 - w) >= 0 && _ < s5 && -1 != u3[_] && (O = a4 + (N = u3[_]) - _, N >= // Mirror x2 onto top-left coordinate system.
+                    if ((_ = a4 + h3 - w) >= 0 && _ < s5 && -1 != u4[_] && (O = a4 + (N = u4[_]) - _, N >= // Mirror x2 onto top-left coordinate system.
                     (x = r3 - x)))
                       return o2(t5, e5, N, O);
                   }
@@ -3739,8 +3739,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
                   if (e5 === l4) return [o4 + 1, t5];
                   if (e5 < l4) {
                     t5 = t5.slice();
-                    var a4 = e5 - r4, s5 = [i4[0], i4[1].slice(0, a4)], u2 = [i4[0], i4[1].slice(a4)];
-                    return t5.splice(o4, 1, s5, u2), [o4 + 1, t5];
+                    var a4 = e5 - r4, s5 = [i4[0], i4[1].slice(0, a4)], u3 = [i4[0], i4[1].slice(a4)];
+                    return t5.splice(o4, 1, s5, u3), [o4 + 1, t5];
                   }
                   r4 = l4;
                 }
@@ -3753,11 +3753,11 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           if (0 !== l3[0])
             return t4;
           if (null != a3 && l3[1] + a3[1] === a3[1] + l3[1])
-            return o3.splice(i3, 2, a3, l3), u(o3, i3, 2);
+            return o3.splice(i3, 2, a3, l3), u2(o3, i3, 2);
           if (null != a3 && 0 === a3[1].indexOf(l3[1])) {
             o3.splice(i3, 2, [a3[0], l3[1]], [0, l3[1]]);
             var s4 = a3[1].slice(l3[1].length);
-            return s4.length > 0 && o3.splice(i3 + 2, 0, [a3[0], s4]), u(o3, i3, 3);
+            return s4.length > 0 && o3.splice(i3 + 2, 0, [a3[0], s4]), u2(o3, i3, 3);
           }
           return t4;
         }(d, s3)), d = function(t4) {
@@ -3773,8 +3773,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         }(d);
       }
       function o2(t3, e3, n3, o3) {
-        var i3 = t3.substring(0, n3), l3 = e3.substring(0, o3), a3 = t3.substring(n3), s3 = e3.substring(o3), u2 = r2(i3, l3), c = r2(a3, s3);
-        return u2.concat(c);
+        var i3 = t3.substring(0, n3), l3 = e3.substring(0, o3), a3 = t3.substring(n3), s3 = e3.substring(o3), u3 = r2(i3, l3), c = r2(a3, s3);
+        return u3.concat(c);
       }
       function i2(t3, e3) {
         if (!t3 || !e3 || t3.charAt(0) != e3.charAt(0)) return 0;
@@ -3788,21 +3788,21 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       }
       function a2(t3) {
         t3.push([0, ""]);
-        for (var e3, r3 = 0, o3 = 0, s3 = 0, u2 = "", c = ""; r3 < t3.length; ) switch (t3[r3][0]) {
+        for (var e3, r3 = 0, o3 = 0, s3 = 0, u3 = "", c = ""; r3 < t3.length; ) switch (t3[r3][0]) {
           case 1:
             s3++, c += t3[r3][1], r3++;
             break;
           case n2:
-            o3++, u2 += t3[r3][1], r3++;
+            o3++, u3 += t3[r3][1], r3++;
             break;
           case 0:
             o3 + s3 > 1 ? (0 !== o3 && 0 !== s3 && // Factor out any common prefixies.
-            (0 !== (e3 = i2(c, u2)) && (r3 - o3 - s3 > 0 && 0 == t3[r3 - o3 - s3 - 1][0] ? t3[r3 - o3 - s3 - 1][1] += c.substring(0, e3) : (t3.splice(0, 0, [0, c.substring(0, e3)]), r3++), c = c.substring(e3), u2 = u2.substring(e3)), 0 !== // Factor out any common suffixies.
-            (e3 = l2(c, u2)) && (t3[r3][1] = c.substring(c.length - e3) + t3[r3][1], c = c.substring(0, c.length - e3), u2 = u2.substring(0, u2.length - e3))), // Delete the offending records and add the merged ones.
-            0 === o3 ? t3.splice(r3 - s3, o3 + s3, [1, c]) : 0 === s3 ? t3.splice(r3 - o3, o3 + s3, [n2, u2]) : t3.splice(r3 - o3 - s3, o3 + s3, [n2, u2], [1, c]), r3 = r3 - o3 - s3 + (o3 ? 1 : 0) + (s3 ? 1 : 0) + 1) : 0 !== r3 && 0 == t3[r3 - 1][0] ? (
+            (0 !== (e3 = i2(c, u3)) && (r3 - o3 - s3 > 0 && 0 == t3[r3 - o3 - s3 - 1][0] ? t3[r3 - o3 - s3 - 1][1] += c.substring(0, e3) : (t3.splice(0, 0, [0, c.substring(0, e3)]), r3++), c = c.substring(e3), u3 = u3.substring(e3)), 0 !== // Factor out any common suffixies.
+            (e3 = l2(c, u3)) && (t3[r3][1] = c.substring(c.length - e3) + t3[r3][1], c = c.substring(0, c.length - e3), u3 = u3.substring(0, u3.length - e3))), // Delete the offending records and add the merged ones.
+            0 === o3 ? t3.splice(r3 - s3, o3 + s3, [1, c]) : 0 === s3 ? t3.splice(r3 - o3, o3 + s3, [n2, u3]) : t3.splice(r3 - o3 - s3, o3 + s3, [n2, u3], [1, c]), r3 = r3 - o3 - s3 + (o3 ? 1 : 0) + (s3 ? 1 : 0) + 1) : 0 !== r3 && 0 == t3[r3 - 1][0] ? (
               // Merge this equality with the previous one.
               (t3[r3 - 1][1] += t3[r3][1], t3.splice(r3, 1))
-            ) : r3++, s3 = 0, o3 = 0, u2 = "", c = "";
+            ) : r3++, s3 = 0, o3 = 0, u3 = "", c = "";
         }
         "" === t3[t3.length - 1][1] && t3.pop();
         var f = false;
@@ -3815,7 +3815,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         f && a2(t3);
       }
       var s2 = r2;
-      function u(t3, e3, n3) {
+      function u2(t3, e3, n3) {
         for (var r3 = e3 + n3 - 1; r3 >= 0 && r3 >= e3 - 1; r3--) if (r3 + 1 < t3.length) {
           var o3 = t3[r3], i3 = t3[r3 + 1];
           o3[0] === i3[1] && t3.splice(r3, 2, [o3[0], o3[1] + i3[1]]);
@@ -3892,7 +3892,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       l2.prototype.emit = function(t3, e3, n3, o3, i3, l3) {
         var a2 = r2 ? r2 + t3 : t3;
         if (!this._events[a2]) return false;
-        var s2, u, c = this._events[a2], f = arguments.length;
+        var s2, u2, c = this._events[a2], f = arguments.length;
         if (c.fn) {
           switch (c.once && this.removeListener(t3, c.fn, void 0, true), f) {
             case 1:
@@ -3908,26 +3908,26 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             case 6:
               return c.fn.call(c.context, e3, n3, o3, i3, l3), true;
           }
-          for (u = 1, s2 = new Array(f - 1); u < f; u++) s2[u - 1] = arguments[u];
+          for (u2 = 1, s2 = new Array(f - 1); u2 < f; u2++) s2[u2 - 1] = arguments[u2];
           c.fn.apply(c.context, s2);
         } else {
           var h, d = c.length;
-          for (u = 0; u < d; u++) switch (c[u].once && this.removeListener(t3, c[u].fn, void 0, true), f) {
+          for (u2 = 0; u2 < d; u2++) switch (c[u2].once && this.removeListener(t3, c[u2].fn, void 0, true), f) {
             case 1:
-              c[u].fn.call(c[u].context);
+              c[u2].fn.call(c[u2].context);
               break;
             case 2:
-              c[u].fn.call(c[u].context, e3);
+              c[u2].fn.call(c[u2].context, e3);
               break;
             case 3:
-              c[u].fn.call(c[u].context, e3, n3);
+              c[u2].fn.call(c[u2].context, e3, n3);
               break;
             case 4:
-              c[u].fn.call(c[u].context, e3, n3, o3);
+              c[u2].fn.call(c[u2].context, e3, n3, o3);
               break;
             default:
               if (!s2) for (h = 1, s2 = new Array(f - 1); h < f; h++) s2[h - 1] = arguments[h];
-              c[u].fn.apply(c[u].context, s2);
+              c[u2].fn.apply(c[u2].context, s2);
           }
         }
         return true;
@@ -3972,8 +3972,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         var a2 = this._events[l3];
         if (a2.fn) a2.fn !== e3 || i3 && !a2.once || n3 && a2.context !== n3 || (0 == --this._eventsCount ? this._events = new o2() : delete this._events[l3]);
         else {
-          for (var s2 = 0, u = [], c = a2.length; s2 < c; s2++) (a2[s2].fn !== e3 || i3 && !a2[s2].once || n3 && a2[s2].context !== n3) && u.push(a2[s2]);
-          u.length ? this._events[l3] = 1 === u.length ? u[0] : u : 0 == --this._eventsCount ? this._events = new o2() : delete this._events[l3];
+          for (var s2 = 0, u2 = [], c = a2.length; s2 < c; s2++) (a2[s2].fn !== e3 || i3 && !a2[s2].once || n3 && a2[s2].context !== n3) && u2.push(a2[s2]);
+          u2.length ? this._events[l3] = 1 === u2.length ? u2[0] : u2 : 0 == --this._eventsCount ? this._events = new o2() : delete this._events[l3];
         }
         return this;
       }, /**
@@ -4031,7 +4031,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return function(e3, n3, r3) {
           return n3 && t3(e3.prototype, n3), r3 && t3(e3, r3), e3;
         };
-      }(), l2 = m(n2(3)), a2 = m(n2(2)), s2 = m(n2(0)), u = m(n2(5)), c = m(n2(10)), f = m(n2(9)), h = n2(36), d = n2(37), p = m(n2(13)), y = n2(26), v = n2(38), b = n2(39), g = n2(40);
+      }(), l2 = m(n2(3)), a2 = m(n2(2)), s2 = m(n2(0)), u2 = m(n2(5)), c = m(n2(10)), f = m(n2(9)), h = n2(36), d = n2(37), p = m(n2(13)), y = n2(26), v = n2(38), b = n2(39), g = n2(40);
       function m(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -4082,22 +4082,22 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             var n3 = this.container.innerText;
             return this.container.innerHTML = "", new a2.default().insert(n3, _({}, p.default.blotName, e4[p.default.blotName]));
           }
-          var r3 = this.prepareMatching(), i3 = o2(r3, 2), l3 = i3[0], s3 = i3[1], u2 = P(this.container, l3, s3);
-          return q(u2, "\n") && null == u2.ops[u2.ops.length - 1].attributes && (u2 = u2.compose(new a2.default().retain(u2.length() - 1).delete(1))), O.log("convert", this.container.innerHTML, u2), this.container.innerHTML = "", u2;
+          var r3 = this.prepareMatching(), i3 = o2(r3, 2), l3 = i3[0], s3 = i3[1], u3 = P(this.container, l3, s3);
+          return q(u3, "\n") && null == u3.ops[u3.ops.length - 1].attributes && (u3 = u3.compose(new a2.default().retain(u3.length() - 1).delete(1))), O.log("convert", this.container.innerHTML, u3), this.container.innerHTML = "", u3;
         } }, { key: "dangerouslyPasteHTML", value: function(t4, e4) {
-          var n3 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : u.default.sources.API;
-          if ("string" == typeof t4) this.quill.setContents(this.convert(t4), e4), this.quill.setSelection(0, u.default.sources.SILENT);
+          var n3 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : u2.default.sources.API;
+          if ("string" == typeof t4) this.quill.setContents(this.convert(t4), e4), this.quill.setSelection(0, u2.default.sources.SILENT);
           else {
             var r3 = this.convert(e4);
-            this.quill.updateContents(new a2.default().retain(t4).concat(r3), n3), this.quill.setSelection(t4 + r3.length(), u.default.sources.SILENT);
+            this.quill.updateContents(new a2.default().retain(t4).concat(r3), n3), this.quill.setSelection(t4 + r3.length(), u2.default.sources.SILENT);
           }
         } }, { key: "onPaste", value: function(t4) {
           var e4 = this;
           if (!t4.defaultPrevented && this.quill.isEnabled()) {
             var n3 = this.quill.getSelection(), r3 = new a2.default().retain(n3.index), o3 = this.quill.scrollingContainer.scrollTop;
-            this.container.focus(), this.quill.selection.update(u.default.sources.SILENT), setTimeout(function() {
-              r3 = r3.concat(e4.convert()).delete(n3.length), e4.quill.updateContents(r3, u.default.sources.USER), // range.length contributes to delta.length()
-              e4.quill.setSelection(r3.length() - n3.length, u.default.sources.SILENT), e4.quill.scrollingContainer.scrollTop = o3, e4.quill.focus();
+            this.container.focus(), this.quill.selection.update(u2.default.sources.SILENT), setTimeout(function() {
+              r3 = r3.concat(e4.convert()).delete(n3.length), e4.quill.updateContents(r3, u2.default.sources.USER), // range.length contributes to delta.length()
+              e4.quill.setSelection(r3.length() - n3.length, u2.default.sources.SILENT), e4.quill.scrollingContainer.scrollTop = o3, e4.quill.focus();
             }, 1);
           }
         } }, { key: "prepareMatching", value: function() {
@@ -4278,7 +4278,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return function(e3, n3, r3) {
           return n3 && t3(e3.prototype, n3), r3 && t3(e3, r3), e3;
         };
-      }(), i2 = c(n2(2)), l2 = c(n2(0)), a2 = c(n2(5)), s2 = c(n2(10)), u = c(n2(9));
+      }(), i2 = c(n2(2)), l2 = c(n2(0)), a2 = c(n2(5)), s2 = c(n2(10)), u2 = c(n2(9));
       function c(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -4326,8 +4326,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
               var s3 = void 0;
               if ("SELECT" === t4.tagName) {
                 if (t4.selectedIndex < 0) return;
-                var u2 = t4.options[t4.selectedIndex];
-                s3 = !u2.hasAttribute("selected") && (u2.value || false);
+                var u3 = t4.options[t4.selectedIndex];
+                s3 = !u3.hasAttribute("selected") && (u3.value || false);
               } else s3 = !t4.classList.contains("ql-active") && (t4.value || !t4.hasAttribute("value")), o4.preventDefault();
               e4.quill.focus();
               var c2 = e4.quill.selection.getRange(), f2 = r2(c2, 1)[0];
@@ -4358,12 +4358,12 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
               l3.selectedIndex = -1) : a3.selected = true;
             } else if (null == t4) l3.classList.remove("ql-active");
             else if (l3.hasAttribute("value")) {
-              var u2 = e4[i3] === l3.getAttribute("value") || null != e4[i3] && e4[i3].toString() === l3.getAttribute("value") || null == e4[i3] && !l3.getAttribute("value");
-              l3.classList.toggle("ql-active", u2);
+              var u3 = e4[i3] === l3.getAttribute("value") || null != e4[i3] && e4[i3].toString() === l3.getAttribute("value") || null == e4[i3] && !l3.getAttribute("value");
+              l3.classList.toggle("ql-active", u3);
             } else l3.classList.toggle("ql-active", null != e4[i3]);
           });
         } }]), e3;
-      }(u.default);
+      }(u2.default);
       function p(t3, e3, n3) {
         var r3 = document.createElement("button");
         r3.setAttribute("type", "button"), r3.classList.add("ql-" + e3), null != n3 && (r3.value = n3), t3.appendChild(r3);
@@ -4594,7 +4594,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return function(e3, n3, r3) {
           return n3 && t3(e3.prototype, n3), r3 && t3(e3, r3), e3;
         };
-      }(), l2 = d(n2(3)), a2 = d(n2(8)), s2 = n2(43), u = d(s2), c = d(n2(27)), f = n2(15), h = d(n2(41));
+      }(), l2 = d(n2(3)), a2 = d(n2(8)), s2 = n2(43), u2 = d(s2), c = d(n2(27)), f = n2(15), h = d(n2(41));
       function d(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -4620,8 +4620,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
             t4.handlers.link.call(t4, !n3.format.link);
           });
         } }]), e3;
-      }(u.default);
-      g.DEFAULTS = (0, l2.default)(true, {}, u.default.DEFAULTS, { modules: { toolbar: { handlers: { link: function(t3) {
+      }(u2.default);
+      g.DEFAULTS = (0, l2.default)(true, {}, u2.default.DEFAULTS, { modules: { toolbar: { handlers: { link: function(t3) {
         if (t3) {
           var e3 = this.quill.getSelection();
           if (null == e3 || 0 == e3.length) return;
@@ -4648,9 +4648,9 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           }), this.quill.on(a2.default.events.SELECTION_CHANGE, function(e4, n3, o3) {
             if (null != e4) {
               if (0 === e4.length && o3 === a2.default.sources.USER) {
-                var i3 = t4.quill.scroll.descendant(c.default, e4.index), l3 = r2(i3, 2), s3 = l3[0], u2 = l3[1];
+                var i3 = t4.quill.scroll.descendant(c.default, e4.index), l3 = r2(i3, 2), s3 = l3[0], u3 = l3[1];
                 if (null != s3) {
-                  t4.linkRange = new f.Range(e4.index - u2, s3.length());
+                  t4.linkRange = new f.Range(e4.index - u3, s3.length());
                   var h2 = c.default.formats(s3.domNode);
                   return t4.preview.textContent = h2, t4.preview.setAttribute("href", h2), t4.show(), void t4.position(t4.quill.getBounds(t4.linkRange));
                 }
@@ -4668,11 +4668,11 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
     /***/
     function(t2, e2, n2) {
       Object.defineProperty(e2, "__esModule", { value: true });
-      var r2 = M(n2(29)), o2 = n2(36), i2 = n2(38), l2 = n2(64), a2 = M(n2(65)), s2 = M(n2(66)), u = n2(67), c = M(u), f = n2(37), h = n2(26), d = n2(39), p = n2(40), y = M(n2(56)), v = M(n2(68)), b = M(n2(27)), g = M(n2(69)), m = M(n2(70)), _ = M(n2(71)), O = M(n2(72)), w = M(n2(73)), x = n2(13), k = M(x), E = M(n2(74)), N = M(n2(75)), A = M(n2(57)), j = M(n2(41)), q = M(n2(28)), T = M(n2(59)), P = M(n2(60)), S = M(n2(61)), C = M(n2(108)), L = M(n2(62));
+      var r2 = M(n2(29)), o2 = n2(36), i2 = n2(38), l2 = n2(64), a2 = M(n2(65)), s2 = M(n2(66)), u2 = n2(67), c = M(u2), f = n2(37), h = n2(26), d = n2(39), p = n2(40), y = M(n2(56)), v = M(n2(68)), b = M(n2(27)), g = M(n2(69)), m = M(n2(70)), _ = M(n2(71)), O = M(n2(72)), w = M(n2(73)), x = n2(13), k = M(x), E = M(n2(74)), N = M(n2(75)), A = M(n2(57)), j = M(n2(41)), q = M(n2(28)), T = M(n2(59)), P = M(n2(60)), S = M(n2(61)), C = M(n2(108)), L = M(n2(62));
       function M(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
-      r2.default.register({ "attributors/attribute/direction": i2.DirectionAttribute, "attributors/class/align": o2.AlignClass, "attributors/class/background": f.BackgroundClass, "attributors/class/color": h.ColorClass, "attributors/class/direction": i2.DirectionClass, "attributors/class/font": d.FontClass, "attributors/class/size": p.SizeClass, "attributors/style/align": o2.AlignStyle, "attributors/style/background": f.BackgroundStyle, "attributors/style/color": h.ColorStyle, "attributors/style/direction": i2.DirectionStyle, "attributors/style/font": d.FontStyle, "attributors/style/size": p.SizeStyle }, true), r2.default.register({ "formats/align": o2.AlignClass, "formats/direction": i2.DirectionClass, "formats/indent": l2.IndentClass, "formats/background": f.BackgroundStyle, "formats/color": h.ColorStyle, "formats/font": d.FontClass, "formats/size": p.SizeClass, "formats/blockquote": a2.default, "formats/code-block": k.default, "formats/header": s2.default, "formats/list": c.default, "formats/bold": y.default, "formats/code": x.Code, "formats/italic": v.default, "formats/link": b.default, "formats/script": g.default, "formats/strike": m.default, "formats/underline": _.default, "formats/image": O.default, "formats/video": w.default, "formats/list/item": u.ListItem, "modules/formula": E.default, "modules/syntax": N.default, "modules/toolbar": A.default, "themes/bubble": C.default, "themes/snow": L.default, "ui/icons": j.default, "ui/picker": q.default, "ui/icon-picker": P.default, "ui/color-picker": T.default, "ui/tooltip": S.default }, true), e2.default = r2.default;
+      r2.default.register({ "attributors/attribute/direction": i2.DirectionAttribute, "attributors/class/align": o2.AlignClass, "attributors/class/background": f.BackgroundClass, "attributors/class/color": h.ColorClass, "attributors/class/direction": i2.DirectionClass, "attributors/class/font": d.FontClass, "attributors/class/size": p.SizeClass, "attributors/style/align": o2.AlignStyle, "attributors/style/background": f.BackgroundStyle, "attributors/style/color": h.ColorStyle, "attributors/style/direction": i2.DirectionStyle, "attributors/style/font": d.FontStyle, "attributors/style/size": p.SizeStyle }, true), r2.default.register({ "formats/align": o2.AlignClass, "formats/direction": i2.DirectionClass, "formats/indent": l2.IndentClass, "formats/background": f.BackgroundStyle, "formats/color": h.ColorStyle, "formats/font": d.FontClass, "formats/size": p.SizeClass, "formats/blockquote": a2.default, "formats/code-block": k.default, "formats/header": s2.default, "formats/list": c.default, "formats/bold": y.default, "formats/code": x.Code, "formats/italic": v.default, "formats/link": b.default, "formats/script": g.default, "formats/strike": m.default, "formats/underline": _.default, "formats/image": O.default, "formats/video": w.default, "formats/list/item": u2.ListItem, "modules/formula": E.default, "modules/syntax": N.default, "modules/toolbar": A.default, "themes/bubble": C.default, "themes/snow": L.default, "ui/icons": j.default, "ui/picker": q.default, "ui/icon-picker": P.default, "ui/color-picker": T.default, "ui/tooltip": S.default }, true), e2.default = r2.default;
     },
     /* 64 */
     /***/
@@ -4721,8 +4721,8 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         } }, { key: "value", value: function(t4) {
           return parseInt(i2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "value", this).call(this, t4)) || void 0;
         } }]), e3;
-      }(a2.default.Attributor.Class), u = new s2("indent", "ql-indent", { scope: a2.default.Scope.BLOCK, whitelist: [1, 2, 3, 4, 5, 6, 7, 8] });
-      e2.IndentClass = u;
+      }(a2.default.Attributor.Class), u2 = new s2("indent", "ql-indent", { scope: a2.default.Scope.BLOCK, whitelist: [1, 2, 3, 4, 5, 6, 7, 8] });
+      e2.IndentClass = u2;
     },
     /* 65 */
     /***/
@@ -4804,7 +4804,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       function s2(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
-      function u(t3, e3) {
+      function u2(t3, e3) {
         if (!(t3 instanceof e3)) throw new TypeError("Cannot call a class as a function");
       }
       function c(t3, e3) {
@@ -4817,7 +4817,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       }
       var h = function(t3) {
         function e3() {
-          return u(this, e3), c(this, (e3.__proto__ || Object.getPrototypeOf(e3)).apply(this, arguments));
+          return u2(this, e3), c(this, (e3.__proto__ || Object.getPrototypeOf(e3)).apply(this, arguments));
         }
         return f(e3, t3), r2(e3, [{ key: "format", value: function(t4, n3) {
           t4 !== d.blotName || n3 ? o2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "format", this).call(this, t4, n3) : this.replaceWith(i2.default.create(this.statics.scope));
@@ -4832,7 +4832,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       h.blotName = "list-item", h.tagName = "LI";
       var d = function(t3) {
         function e3(t4) {
-          u(this, e3);
+          u2(this, e3);
           var n3 = c(this, (e3.__proto__ || Object.getPrototypeOf(e3)).call(this, t4)), r3 = function(e4) {
             if (e4.target.parentNode === t4) {
               var r4 = n3.statics.formats(t4), o3 = i2.default.find(e4.target);
@@ -4999,7 +4999,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if ("value" in o3) return o3.value;
         var l3 = o3.get;
         return void 0 !== l3 ? l3.call(r3) : void 0;
-      }, l2 = n2(0), a2 = (r2 = l2) && r2.__esModule ? r2 : { default: r2 }, s2 = n2(27), u = ["alt", "height", "width"], c = function(t3) {
+      }, l2 = n2(0), a2 = (r2 = l2) && r2.__esModule ? r2 : { default: r2 }, s2 = n2(27), u2 = ["alt", "height", "width"], c = function(t3) {
         function e3() {
           return function(t4, e4) {
             if (!(t4 instanceof e4)) throw new TypeError("Cannot call a class as a function");
@@ -5012,12 +5012,12 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           if ("function" != typeof e4 && null !== e4) throw new TypeError("Super expression must either be null or a function, not " + typeof e4);
           t4.prototype = Object.create(e4 && e4.prototype, { constructor: { value: t4, enumerable: false, writable: true, configurable: true } }), e4 && (Object.setPrototypeOf ? Object.setPrototypeOf(t4, e4) : t4.__proto__ = e4);
         }(e3, t3), o2(e3, [{ key: "format", value: function(t4, n3) {
-          u.indexOf(t4) > -1 ? n3 ? this.domNode.setAttribute(t4, n3) : this.domNode.removeAttribute(t4) : i2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "format", this).call(this, t4, n3);
+          u2.indexOf(t4) > -1 ? n3 ? this.domNode.setAttribute(t4, n3) : this.domNode.removeAttribute(t4) : i2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "format", this).call(this, t4, n3);
         } }], [{ key: "create", value: function(t4) {
           var n3 = i2(e3.__proto__ || Object.getPrototypeOf(e3), "create", this).call(this, t4);
           return "string" == typeof t4 && n3.setAttribute("src", this.sanitize(t4)), n3;
         } }, { key: "formats", value: function(t4) {
-          return u.reduce(function(e4, n3) {
+          return u2.reduce(function(e4, n3) {
             return t4.hasAttribute(n3) && (e4[n3] = t4.getAttribute(n3)), e4;
           }, {});
         } }, { key: "match", value: function(t4) {
@@ -5054,7 +5054,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         if ("value" in o3) return o3.value;
         var l3 = o3.get;
         return void 0 !== l3 ? l3.call(r3) : void 0;
-      }, l2 = n2(4), a2 = n2(27), s2 = (r2 = a2) && r2.__esModule ? r2 : { default: r2 }, u = ["height", "width"], c = function(t3) {
+      }, l2 = n2(4), a2 = n2(27), s2 = (r2 = a2) && r2.__esModule ? r2 : { default: r2 }, u2 = ["height", "width"], c = function(t3) {
         function e3() {
           return function(t4, e4) {
             if (!(t4 instanceof e4)) throw new TypeError("Cannot call a class as a function");
@@ -5067,12 +5067,12 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
           if ("function" != typeof e4 && null !== e4) throw new TypeError("Super expression must either be null or a function, not " + typeof e4);
           t4.prototype = Object.create(e4 && e4.prototype, { constructor: { value: t4, enumerable: false, writable: true, configurable: true } }), e4 && (Object.setPrototypeOf ? Object.setPrototypeOf(t4, e4) : t4.__proto__ = e4);
         }(e3, t3), o2(e3, [{ key: "format", value: function(t4, n3) {
-          u.indexOf(t4) > -1 ? n3 ? this.domNode.setAttribute(t4, n3) : this.domNode.removeAttribute(t4) : i2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "format", this).call(this, t4, n3);
+          u2.indexOf(t4) > -1 ? n3 ? this.domNode.setAttribute(t4, n3) : this.domNode.removeAttribute(t4) : i2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "format", this).call(this, t4, n3);
         } }], [{ key: "create", value: function(t4) {
           var n3 = i2(e3.__proto__ || Object.getPrototypeOf(e3), "create", this).call(this, t4);
           return n3.setAttribute("frameborder", "0"), n3.setAttribute("allowfullscreen", true), n3.setAttribute("src", this.sanitize(t4)), n3;
         } }, { key: "formats", value: function(t4) {
-          return u.reduce(function(e4, n3) {
+          return u2.reduce(function(e4, n3) {
             return t4.hasAttribute(n3) && (e4[n3] = t4.getAttribute(n3)), e4;
           }, {});
         } }, { key: "sanitize", value: function(t4) {
@@ -5111,7 +5111,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       function s2(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
-      function u(t3, e3) {
+      function u2(t3, e3) {
         if (!(t3 instanceof e3)) throw new TypeError("Cannot call a class as a function");
       }
       function c(t3, e3) {
@@ -5124,7 +5124,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       }
       var h = function(t3) {
         function e3() {
-          return u(this, e3), c(this, (e3.__proto__ || Object.getPrototypeOf(e3)).apply(this, arguments));
+          return u2(this, e3), c(this, (e3.__proto__ || Object.getPrototypeOf(e3)).apply(this, arguments));
         }
         return f(e3, t3), r2(e3, null, [{ key: "create", value: function(t4) {
           var n3 = o2(e3.__proto__ || Object.getPrototypeOf(e3), "create", this).call(this, t4);
@@ -5136,7 +5136,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       h.blotName = "formula", h.className = "ql-formula", h.tagName = "SPAN";
       var d = function(t3) {
         function e3() {
-          u(this, e3);
+          u2(this, e3);
           var t4 = c(this, (e3.__proto__ || Object.getPrototypeOf(e3)).call(this));
           if (null == window.katex) throw new Error("Formula module requires KaTeX.");
           return t4;
@@ -5175,7 +5175,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       function s2(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
-      function u(t3, e3) {
+      function u2(t3, e3) {
         if (!(t3 instanceof e3)) throw new TypeError("Cannot call a class as a function");
       }
       function c(t3, e3) {
@@ -5188,7 +5188,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       }
       var h = function(t3) {
         function e3() {
-          return u(this, e3), c(this, (e3.__proto__ || Object.getPrototypeOf(e3)).apply(this, arguments));
+          return u2(this, e3), c(this, (e3.__proto__ || Object.getPrototypeOf(e3)).apply(this, arguments));
         }
         return f(e3, t3), r2(e3, [{ key: "replaceWith", value: function(t4) {
           this.domNode.textContent = this.domNode.textContent, this.attach(), o2(e3.prototype.__proto__ || Object.getPrototypeOf(e3.prototype), "replaceWith", this).call(this, t4);
@@ -5200,7 +5200,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
       h.className = "ql-syntax";
       var d = new i2.default.Attributor.Class("token", "hljs", { scope: i2.default.Scope.INLINE }), p = function(t3) {
         function e3(t4, n3) {
-          u(this, e3);
+          u2(this, e3);
           var r3 = c(this, (e3.__proto__ || Object.getPrototypeOf(e3)).call(this, t4, n3));
           if ("function" != typeof r3.options.highlight) throw new Error("Syntax module requires highlight.js. Please include the library on the page before Quill.");
           var o3 = null;
@@ -5411,7 +5411,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
         return function(e3, n3, r3) {
           return n3 && t3(e3.prototype, n3), r3 && t3(e3, r3), e3;
         };
-      }(), i2 = f(n2(3)), l2 = f(n2(8)), a2 = n2(43), s2 = f(a2), u = n2(15), c = f(n2(41));
+      }(), i2 = f(n2(3)), l2 = f(n2(8)), a2 = n2(43), s2 = f(a2), u2 = n2(15), c = f(n2(41));
       function f(t3) {
         return t3 && t3.__esModule ? t3 : { default: t3 };
       }
@@ -5450,7 +5450,7 @@ var r, o = e ? n.exports : (e = 1, "undefined" != typeof self && self, r = funct
               var i3 = r3.quill.getLines(e4.index, e4.length);
               if (1 === i3.length) r3.position(r3.quill.getBounds(e4));
               else {
-                var a3 = i3[i3.length - 1], s3 = r3.quill.getIndex(a3), c2 = Math.min(a3.length() - 1, e4.index + e4.length - s3), f2 = r3.quill.getBounds(new u.Range(s3, c2));
+                var a3 = i3[i3.length - 1], s3 = r3.quill.getIndex(a3), c2 = Math.min(a3.length() - 1, e4.index + e4.length - s3), f2 = r3.quill.getBounds(new u2.Range(s3, c2));
                 r3.position(f2);
               }
             } else document.activeElement !== r3.textbox && r3.quill.hasFocus() && r3.hide();
@@ -5508,7 +5508,17 @@ const i = t(o), l = i.import("blots/block/embed"), a = (_a = class extends l {
   }
 }, __publicField(_a, "allowDelete", false), _a);
 a.blotName = "imageBlot", a.className = "image-uploading", a.tagName = "span", i.register({ "formats/imageBlot": a });
-class s {
+const s = i.import("formats/image");
+i.register((_b = class extends s {
+  static create(t2) {
+    let e2 = super.create(t2);
+    return e2.setAttribute("src", t2.src), null !== t2.uploadId && e2.setAttribute("upload-id", t2.uploadId), e2;
+  }
+  static value(t2) {
+    return { src: t2.getAttribute("src"), uploadId: t2.getAttribute("upload-id") };
+  }
+}, __publicField(_b, "blotName", "custom-image"), __publicField(_b, "uploadId", -1), _b));
+class u {
   constructor(t2, e2) {
     this.quill = t2, this.options = e2, this.range = null, this.placeholderDelta = null, "function" != typeof this.options.upload && console.warn("[Missing config] upload function that returns a promise is required");
     var n2 = this.quill.getModule("toolbar");
@@ -5556,7 +5566,7 @@ class s {
         let t3 = n2.result;
         this.insertBase64Image(t3);
       }
-    }, false), t2 && n2.readAsDataURL(t2), this.options.upload(t2).then(({ imageUrl: t3, uploadId: e3 = -1 }) => {
+    }, false), t2 && n2.readAsDataURL(t2), this.options.upload(t2).then(({ url: t3, uploadId: e3 = -1 }) => {
       this.insertToEditor(t3, e3);
     }, (t3) => {
       e2 = true, this.removeBase64Image(), console.warn(t3);
@@ -5573,13 +5583,9 @@ class s {
   }
   insertToEditor(t2, e2) {
     const n2 = this.range, r2 = this.calculatePlaceholderInsertLength();
-    if (a.allowDelete = true, // Delete the placeholder image
+    a.allowDelete = true, // Delete the placeholder image
     this.quill.deleteText(n2.index, r2, "api"), a.allowDelete = false, // Insert the server saved image
-    this.quill.insertEmbed(n2.index, "image", `${t2}`, "user"), -1 !== e2) {
-      const [t3] = this.quill.getLeaf(n2.index);
-      (t3 == null ? void 0 : t3.domNode) && t3.domNode.setAttribute("data-upload-id", e2);
-    }
-    n2.index++, this.quill.setSelection(n2, "user");
+    this.quill.insertEmbed(n2.index, "custom-image", { src: t2, uploadId: -1 !== e2 ? e2 : null }, "user"), n2.index++, this.quill.setSelection(n2, "user");
   }
   // The length of the insert delta from insertBase64Image can vary depending on what part of the line the insert occurs
   calculatePlaceholderInsertLength() {
@@ -5590,9 +5596,9 @@ class s {
     a.allowDelete = true, this.quill.deleteText(t2.index, e2, "api"), a.allowDelete = false;
   }
 }
-window.ImageUploader = s;
+window.ImageUploader = u;
 export {
-  s as I,
+  u as I,
   i as Q
 };
-//# sourceMappingURL=quill.imageUploader-BZ-yeQMG.js.map
+//# sourceMappingURL=quill.imageUploader-Cfl8uRzF.js.map
